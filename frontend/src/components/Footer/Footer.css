@@ -1,0 +1,14 @@
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px 32px;
+  background-color: rgba(0, 0, 0, 0.664);
+}
+
+.footer-right p{
+  color: rgb(255, 255, 255, 60%);
+  letter-spacing: 2px;
+  font-size: 10px;
+  font-weight: bold;
+}

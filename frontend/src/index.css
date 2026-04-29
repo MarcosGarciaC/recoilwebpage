@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,900;1,14..32,900&family=Lilita+One&family=Manrope:wght@200..800&family=Momo+Signature&family=Montserrat:ital,wght@0,900;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playwrite+NZ+Basic:wght@100..400&family=Quicksand:wght@300..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap');
+body {
+  padding: 0;
+  margin: 0;
+  background: #131313;
+  color: #ffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+h1, h2, h3, h4 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+p {
+  font-family: "Manrope", sans-serif;
+}
+
+button {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+a {
+  font-style: normal;
+  text-decoration: none;
+  color: #ffffffbb;
+  font-family: "Space Grotesk", sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #00FF41;
+  transition: width 0.3s ease;
+}
+
+a:hover {
+  color: #00FF41;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.logo {
+  color: #00FF41;  
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.option-list {
+  display: flex;
+  justify-content: center;   /* mejor que space-between */
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.list-option {
+  list-style: none;
+}
