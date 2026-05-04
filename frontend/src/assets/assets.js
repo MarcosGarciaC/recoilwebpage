@@ -1,4 +1,9 @@
 import CODM from './CODM_Home_Hero-BG_Desktop-LG-11.webp';
+import RES from './games/Resident_Evil_Requiem_Art.jpg';
+import CODN from './games/Call-of-Duty-–-Is-this-the-new-map-for-Warzone-2-1.jpg'
+import FTN from './games/maxresdefault.jpg';
+import H5  from './games/header (5).jpg'
+import H6  from './games/header (6).jpg'
 
 export const header_games = [
   {
@@ -416,3 +421,123 @@ export const reviews = [
   { id: 20, user_id: 4, game_id: 20, rating: 5, comment: "Spider-Man perfecto.", recommend: true, hours_played: 45 }
 ]
 
+
+export const news = [
+ {
+  news_title : "Nueva entrega: Resident Evil Series",
+  published_date: "24.05.26",
+  description: "La próxima evolución del motor de física virtual llega este verano. Experimenta un movimiento fluido sin precedentes, entornos destructibles y una interfaz táctica redefinida.",
+  background_image: RES, 
+  highlight: 1,
+},
+{
+  news_title : "MEJORAS EN CALIBRACION DE CONEXIONES NEURONALES",
+  published_date: "24.05.26",
+  description: "Optimized input latency by 14ms across all peripheral types in the latest patch.",
+  background_image: RES, 
+  highlight: 0,
+  category: 'UPDATES',
+},
+{
+  news_title : " PACK DE EXPANSION: WARZONE",
+  published_date: "24.05.26",
+  description: "New maps, 4 exclusive character classes, and the highly anticipated Zero-G game mode.",
+  background_image: CODN, 
+  highlight: 0,
+  category: 'Patch_notes',
+},
+{
+  news_title : "FORTNITE WORLD FINALS",
+  published_date: "24.05.26",
+  description: "Watch the top 16 squads compete for the $2.5M prize pool starting this Friday.",
+  background_image: FTN, 
+  highlight: 0,
+  category: 'Community',
+},
+{
+  news_title : "EL MATCH PERFECTO EN AJEDREZ",
+  published_date: "24.05.26",
+  description: "A deep dive into the procedural destruction algorithms powering our new physics engine.",
+  background_image: H5, 
+  highlight: 0,
+  category: 'Dev_Blog',
+},
+{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},{
+  news_title : "NUEVOS JUEGOS DE VERANO",
+  published_date: "24.05.26",
+  description: "Limited edition technical wear and hardware accessories available for pre-order next month.",
+  background_image: H6, 
+  highlight: 0,
+  category: 'UPDATES',
+},
+]

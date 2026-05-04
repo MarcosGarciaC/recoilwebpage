@@ -1,0 +1,363 @@
+.news-hero-games {
+  height: 800px; /* puedes ajustar altura diferente si quieres */
+  position: relative;
+}
+
+.news-hero-img {
+  width: 100%;
+  height: 800px;
+  object-fit: cover;
+}
+
+.news-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.644);
+}
+
+.news-text-overlay {
+  margin: 50px;
+  max-width: 659px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.news-hero-heading {
+  font-size: 72px;
+  margin: 0;
+  line-height: 96px;
+  letter-spacing: -4.8px;
+  text-transform: uppercase;
+}
+
+.datep span {
+  background-color: #00FC40;
+  color: #005A10;
+  font-size: 10px;
+  padding: 4px 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.datep {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #A1A1AA;
+}
+
+.news-hero-text {
+  font-size: 16px;
+  color: #ADAAAA;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.news-btn-overlay {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.news-btn-review {
+  color: #005A10;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  background: linear-gradient(110deg, #9CFF93 0%, #00FC40 100%);
+  cursor: pointer;
+}
+
+.news-btn-review:hover {
+  background: linear-gradient(110deg, #000000 0%, #292929 100%);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.news-btn-gameplay {
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+
+.news-btn-gameplay:hover {
+  background: white;
+  color: black;
+  transition: 0.3s ease;
+}
+
+.news-filter {
+  width: 100%;
+  border-bottom: 1px solid #2a2a2a;
+  margin-bottom: 20px;
+}
+
+.news-filter__options {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 24px 32px;
+}
+
+.news-filter__options li {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #71717A;
+  letter-spacing: 2px;
+  font-family: "Space Grotesk", sans-serif;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.news-filter__options li:hover {
+  color: #ffffff;
+}
+.news-filter__options li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #00FF41;
+  transition: width 0.3s ease;
+}
+
+.news-filter__options li:hover::after {
+  width: 100%;
+}
+.active {
+  color: #00FF41;
+}
+
+.active::after {
+  width: 100%;
+}
+
+
+.news-card__box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 40px;
+  padding: 40px 32px;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  cursor: pointer;
+}
+
+.news-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.news-card .log {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.news-card h3 {
+  font-size: 24px;
+  letter-spacing: -0.6px; 
+  margin: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.news-card p {
+  margin: 0;
+  color: #9CA3AF; 
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.news-card .date {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #9CFF93;
+  text-transform: uppercase;
+}
+
+.news-card::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #2a2a2a;
+  margin-top: 10px;
+}
+
+.news-card:hover img {
+  transform: scale(1.03);
+  transition: transform 0.4s ease;
+}
+
+.news-card img {
+  transition: transform 0.4s ease;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0;
+}
+
+.pagination-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #27272a;
+  background: transparent;
+  color: #71717A;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-arrow:hover {
+  border-color: #00FF41;
+  color: #00FF41;
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: #71717A;
+  font-weight: 900;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-number:hover {
+  color: white;
+}
+
+.pagination-number.active {
+  background: #9CFF93;
+  color: #000;
+}
+
+.subscribe-section {
+  background-color: #0c0c0c;
+  padding: 8rem 2rem;
+  font-family: "Manrope", sans-serif;
+  color: white;
+}
+
+.subscribe-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subscribe-tag {
+  display: block;
+  color: #9CFF93;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  margin-bottom: 24px;
+}
+
+.subscribe-title {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.subscribe-description {
+  color: #71717A;
+  margin-bottom: 48px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.subscribe-input {
+  background-color: #1f1f1f;
+  border: none;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 6px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  outline: none;
+  width: 300px;
+}
+
+.subscribe-input::placeholder {
+  color: #52525B;
+}
+
+.subscribe-input:focus {
+  box-shadow: 0 0 0 1px #9CFF93;
+}
+
+.subscribe-button {
+  background-color: white;
+  color: black;
+  font-weight: 900;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subscribe-button:hover {
+  background-color: #9CFF93;
+}

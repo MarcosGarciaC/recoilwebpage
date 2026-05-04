@@ -78,3 +78,10 @@ ul {
 .list-option {
   list-style: none;
 }
+
+
+.padding-pages {
+  padding-top: 140px;
+  padding-left: 64px;
+  padding-right: 64px; 
+}

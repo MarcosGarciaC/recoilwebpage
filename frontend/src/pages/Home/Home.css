@@ -25,6 +25,9 @@
   max-height: 509.75px;
   max-width: 100%;
   margin: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .hero-overlay__heading {

@@ -11,7 +11,7 @@ const Navbar = () => {
         <ul className='option-list'>
           <li className='list-option'><a href="/">Descubre</a></li>
           <li className='list-option'><a href="/genders">Generos</a></li>
-          <li className='list-option'><a href="#">Noticias</a></li>
+          <li className='list-option'><a href="/news">Noticias</a></li>
           <li className='list-option'><a href="#">Premium</a></li>
         </ul>
       </div>
