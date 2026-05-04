@@ -67,6 +67,7 @@ const Home = () => {
             <p>LIVE DATA FEED / 2024</p>
           </div>
         </div>
+        {/*BENTO GRID */}
         <div className="categories-box">
           <div className="box" style={{ gridArea: "box-1" }}>
             <img src={fps_category} alt="" className='' />
