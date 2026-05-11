@@ -462,3 +462,90 @@
   top: 15px; 
   left: 15px;
 }
+
+
+
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    filter 1s ease;
+}
+
+.reveal-left {
+  transform: translateX(-120px);
+}
+
+.reveal-right {
+  transform: translateX(120px);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0px);
+}
+
+
+/* CAROUSEL DRAG */
+
+.game-cards__carousel {
+  cursor: grab;
+  user-select: none;
+}
+
+.game-cards__carousel.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+/* CARD HOVER */
+
+.game-card {
+  max-height: 700px;
+  max-width: 362px;
+
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.5s ease,
+    opacity 0.5s ease;
+
+  position: relative;
+}
+
+.game-card:hover {
+  transform: translateY(-12px) scale(1.03);
+
+  filter:
+    brightness(1.1)
+    drop-shadow(0 0 25px rgba(186, 186, 186, 0.35));
+
+  z-index: 10;
+}
+
+/* IMAGE FX */
+
+.game-card img {
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+.game-card:hover img {
+  transform: scale(1.04);
+  filter: contrast(1.1);
+}
+
+/* OVERLAY GLOW */
+
+.rating-overlay {
+  transition:
+    background 0.4s ease,
+    transform 0.4s ease;
+}
+
+.game-card:hover .rating-overlay {
+  background: rgba(0,0,0,0.9);
+  transform: scale(1.08);
+}

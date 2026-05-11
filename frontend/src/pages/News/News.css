@@ -146,9 +146,6 @@
 .news-filter__options li:hover::after {
   width: 100%;
 }
-.active {
-  color: #00FF41;
-}
 
 .active::after {
   width: 100%;
