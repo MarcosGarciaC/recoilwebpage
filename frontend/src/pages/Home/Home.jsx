@@ -1,5 +1,4 @@
-import React, { useRef } from 'react'
-
+import React, { useRef, useEffect } from 'react'
 import './Home.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -36,15 +35,63 @@ const Home = () => {
     }
   }
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (carouselRef.current) {
+        const cardWidth =
+          carouselRef.current.querySelector('.game-card').offsetWidth + 30
+
+        const maxScrollLeft =
+          carouselRef.current.scrollWidth - carouselRef.current.clientWidth
+
+        // Si llega al final, vuelve al inicio
+        if (carouselRef.current.scrollLeft >= maxScrollLeft) {
+          carouselRef.current.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          })
+        } else {
+          carouselRef.current.scrollBy({
+            left: cardWidth,
+            behavior: 'smooth'
+          })
+        }
+      }
+    }, 3000) 
+
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const reveals = document.querySelectorAll('.reveal')
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active')
+          }
+        })
+      },
+      {
+        threshold: 0.15
+      }
+    )
+
+    reveals.forEach(el => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+  
   return (
-    <section id='home'>
-      <header className='hero-section'>
+    <section id='home' >
+      <header className='hero-section' >
         {header_games.map((game, index) => {
           return (
             <div className='hero-games' key={index}>
               <img src={game.game_img} alt="Hero" className='hero-section__img' />
               <div className='overlay'>
-                <div className="text-overlay">
+                <div className="text-overlay reveal reveal-left">
                   <h2 className='hero-overlay__heading'>{game.game_name}</h2>
                   <p className='hero-overlay__text'>{game.game_description}</p>
                   <div className="btn-overlay">
@@ -57,7 +104,7 @@ const Home = () => {
           )
         })}
       </header>
-      <section id='featured-genders'>
+      <section id='featured-genders' className='reveal reveal-right'>
         <div className='fg-heading__txt'>
           <div className='htxt-left'>
             <p className='htxt-p'>Pulse check</p>
@@ -99,7 +146,7 @@ const Home = () => {
             </div></div>
         </div>
       </section>
-      <section id='elite-rating'>
+      <section id='elite-rating' className='reveal reveal-left'>
         <div className="head-heading">
           <h1>Elite Ratings</h1>
           <div className="head-options">
@@ -136,7 +183,7 @@ const Home = () => {
           })}
         </div>
       </section>
-      <section id='discord-call__action'>
+      <section id='discord-call__action' className='reveal reveal-right'>
         <div className='call-action__box'>
           <div className='message-icon'>
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#9CFF93" class="bi bi-chat-left" viewBox="0 0 16 16">

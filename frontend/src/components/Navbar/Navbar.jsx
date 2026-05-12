@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav id='navbar'>
       <div id='nb-left__side'>
-        <h1 className='logo'>RECOIL</h1>
+        <h1 className='logo wave-logo'>RECOIL</h1>
       </div>
       <div id="nb-center">
         <ul className='option-list'>

@@ -3,7 +3,7 @@ import './GameCatalog.css'
 
 const GameCatalog = () => {
   return (
-    <div>
+    <div >
       
     </div>
   )
