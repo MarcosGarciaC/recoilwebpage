@@ -7,7 +7,8 @@ import Footer from './components/Footer/Footer';
 
 import Home from './pages/Home/Home';
 import Genders from './pages/Genders/Genders';
-import News from './pages/News/News'
+import News from './pages/News/News';
+import Premium from './pages/Premium/Premium';
 
 function App() {
    const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path='/genders' element={<Genders/>} />
             <Route path='/news' element={<News/>} />
+            <Route path="/premium" element={<Premium />} />
          </Routes>
          <Footer></Footer>
       </section>

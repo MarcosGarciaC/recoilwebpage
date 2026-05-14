@@ -12,7 +12,7 @@ const Navbar = () => {
           <li className='list-option'><a href="/">Descubre</a></li>
           <li className='list-option'><a href="/genders">Generos</a></li>
           <li className='list-option'><a href="/news">Noticias</a></li>
-          <li className='list-option'><a href="#">Premium</a></li>
+          <li className='list-option'><a href="/premium">Premium</a></li>
         </ul>
       </div>
       <div id="nb-right__side">
