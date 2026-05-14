@@ -6,6 +6,7 @@ import user1 from '../../assets/users/User01.jpg'
 import user2 from '../../assets/users/User02.jpg'
 import user3 from '../../assets/users/User03.jpg'
 import user4 from '../../assets/users/User04.jpg'
+import user5 from '../../assets/users/User05.jpg'
 
     
 
@@ -326,10 +327,10 @@ import user4 from '../../assets/users/User04.jpg'
 
             <div className="featured-review__user">
 
-                <img className="featured-review__avatar" src={user1} alt="usuario" />
+                <img className="featured-review__avatar" src={user5} alt="usuario" />
 
                 <div>
-                    <h3>@Chochita</h3>
+                    <h3>@Saint_Chochit</h3>
                     <span>OPERADOR VERIFICADO</span>
                 </div>
 
