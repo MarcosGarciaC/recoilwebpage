@@ -36,10 +36,10 @@ const News = () => {
         {highlightedNews.map((item, index) => {
           return (
             <div className='news-hero-games' key={index}>
-<div 
-  className="news-hero-img"
-  style={{ backgroundImage: `url(${item.background_image})` }}
-></div>              <div className='news-overlay'>
+              <div
+                className="news-hero-img"
+                style={{ backgroundImage: `url(${item.background_image})` }}
+              ></div>              <div className='news-overlay'>
                 <div className="news-text-overlay">
                   <h2 className='news-hero-heading'>{item.news_title}</h2>
                   <div className='published-day'>
