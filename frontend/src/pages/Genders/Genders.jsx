@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Genders.css'
 
 //categories images
@@ -11,8 +12,24 @@ import horror from '../../assets/categories/image.png'
 import sim from '../../assets/categories/sim.png'
 import rv from '../../assets/categories/header (4).jpg'
 
+const categories = [
+  { title: 'ACCION', image: acction, genre: 'Acción' },
+  { title: 'RPG', image: rpg, genre: 'RPG' },
+  { title: 'ESTRATEGIA', image: estrategia, genre: 'Estrategia' },
+  { title: 'INDIE', image: indie, genre: 'Indie' },
+  { title: 'DEPORTES', image: deportes, genre: 'Deportes' },
+  { title: 'HORROR', image: horror, genre: 'Horror' },
+  { title: 'SIMULACION', image: sim, genre: 'Simulación' },
+  { title: 'REALIDAD VIRTUAL', image: rv, genre: 'Realidad Virtual' }
+]
 
 const Genders = () => {
+  const navigate = useNavigate()
+
+  const goToFilteredCatalog = genre => {
+    navigate(`/gamecatalogfiltered?genre=${encodeURIComponent(genre)}`)
+  }
+
   return (
     <div className='genders'>
       <div className='title-box'>
@@ -27,66 +44,52 @@ const Genders = () => {
       </div>
       <div className="categories-division">
         <div className="categories-bento">
-          <div className="box" style={{ gridArea: "box-1", background: "white" }}>
-            <img src={acction} alt="" />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>ACCION</h4>
+          {categories.slice(0, 3).map((category, idx) => (
+            <div
+              key={category.title}
+              className='box box--clickable'
+              style={{ gridArea: `box-${idx + 1}`, background: 'white' }}
+              onClick={() => goToFilteredCatalog(category.genre)}
+            >
+              <img src={category.image} alt={category.title} />
+              <div className="categorie-info flex">
+                <p className='p-number width'>01 / Genre</p>
+                <h4 className='h4-gener width'>{category.title}</h4>
+              </div>
             </div>
-          </div>
-          <div className="box" style={{ gridArea: "box-2", background: "white" }}>
-            <img src={rpg} />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>RPG</h4>
-            </div>
-          </div>
-          <div className="box" style={{ gridArea: "box-3", background: "white" }}>
-            <img src={estrategia} />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>ESTRATEGIA</h4>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="categories-bento__middle">
-          <div className="box" style={{ gridArea: "box-4", background: "white" }}>
-            <img src={indie} alt="" />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>INDIE</h4>
+          {categories.slice(3, 6).map((category, idx) => (
+            <div
+              key={category.title}
+              className='box box--clickable'
+              style={{ gridArea: `box-${idx + 4}`, background: 'white' }}
+              onClick={() => goToFilteredCatalog(category.genre)}
+            >
+              <img src={category.image} alt={category.title} />
+              <div className="categorie-info flex">
+                <p className='p-number width'>01 / Genre</p>
+                <h4 className='h4-gener width'>{category.title}</h4>
+              </div>
             </div>
-          </div>
-          <div className="box" style={{ gridArea: "box-5", background: "white" }}>
-            <img src={deportes} alt="" />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>DEPORTES</h4>
-            </div>
-          </div>
-          <div className="box" style={{ gridArea: "box-6", background: "white" }}>
-            <img src={horror} alt="" />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>HORROR</h4>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="categories-bento__bottom">
-          <div className="box" style={{ gridArea: "box-7", background: "white" }}>
-            <img src={sim} alt="" />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>SIMULACION</h4>
+          {categories.slice(6).map((category, idx) => (
+            <div
+              key={category.title}
+              className='box box--clickable'
+              style={{ gridArea: `box-${idx + 7}`, background: 'white' }}
+              onClick={() => goToFilteredCatalog(category.genre)}
+            >
+              <img src={category.image} alt={category.title} />
+              <div className="categorie-info flex">
+                <p className='p-number width'>01 / Genre</p>
+                <h4 className='h4-gener width'>{category.title}</h4>
+              </div>
             </div>
-          </div>
-          <div className="box" style={{ gridArea: "box-8", background: "white" }}>
-            <img src={rv} alt="" />
-            <div className="categorie-info flex">
-              <p className='p-number width'>01 / Genre</p>
-              <h4 className='h4-gener width'>REALIDAD VIRTUAL</h4>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

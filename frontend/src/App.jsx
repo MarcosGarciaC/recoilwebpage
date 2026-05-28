@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 
 import Home from './pages/Home/Home';
 import Genders from './pages/Genders/Genders';
+import GameCatalogFiltered from './components/GameCatalogFiltered/GameCatalogFiltered';
 import News from './pages/News/News';
 import Premium from './pages/Premium/Premium';
 
@@ -19,6 +20,7 @@ function App() {
          <Routes>
             <Route path="/" element={<Home />} />
             <Route path='/genders' element={<Genders/>} />
+            <Route path='/gamecatalogfiltered' element={<GameCatalogFiltered />} />
             <Route path='/news' element={<News/>} />
             <Route path="/premium" element={<Premium />} />
          </Routes>

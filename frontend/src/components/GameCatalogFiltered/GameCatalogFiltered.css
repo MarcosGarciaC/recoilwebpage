@@ -1,0 +1,145 @@
+.game-catalog-filtered-page {
+  padding-top: 100px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding-inline: 40px;
+}
+
+.game-catalog-filtered-page aside {
+  position: sticky;
+  top: 100px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.catalog-results {
+  flex: 1;
+}
+
+.aside-title {
+  text-transform: uppercase;
+  letter-spacing: 3.6px;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 15px 0;
+}
+
+.genre-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.genre-selection__array {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+}
+
+.genre-selection__btn {
+  padding: 6px 12px;
+  background-color: #262626;
+  border: none;
+  color: white;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.genre-selection__btn:hover {
+  color: #006413;
+  background-color: #9CFF93;
+  font-weight: bold;
+}
+
+.genre-selection__btn:active {
+  color: #006413;
+  background-color: #9CFF93;
+  font-weight: bold;
+}
+
+.range-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  box-sizing: border-box;
+  padding:  0 20px 0 0;
+}
+
+#score-range {
+  background-color: transparent;
+  appearance: none;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+#score-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 12px;
+  background: transparent;
+}
+
+#score-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;              
+  height: 20px;             
+  background: white;
+  border: #9CFF93 2px solid;
+  border-radius: 50%;
+  margin-top: -6px;        
+}
+
+#score-range::-moz-range-track {
+  height: 8px;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+#score-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: #9CFF93 2px solid;
+  border: none;
+  border-radius: 50%;
+}
+
+.platform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+#checkbox-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.catalog-results {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+#h1-header__catalog {
+  font-size: 48px;
+  letter-spacing: -2.4px;
+}
+
+.display-games__catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  gap: 32px;
+  margin-top: 30px;
+}

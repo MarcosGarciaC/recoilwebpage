@@ -15,6 +15,7 @@ body {
 
 h1, h2, h3, h4 {
   font-family: "Space Grotesk", sans-serif;
+  text-transform: uppercase;
 }
 
 p {
@@ -84,4 +85,8 @@ ul {
   padding-top: 140px;
   padding-left: 64px;
   padding-right: 64px; 
+}
+
+button {
+  font-family: "Manrope", sans-serif;
 }

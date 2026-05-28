@@ -117,4 +117,13 @@ text-transform: uppercase;
     "box-7 box-8";
 }
 
+.box--clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box--clickable:hover {
+  transform: translateY(-10px);
+}
+
 
