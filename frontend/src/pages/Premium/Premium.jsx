@@ -1,5 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState,useCallback } from 'react'
 import './Premium.css'
+
+// Video y audio
+import heroVideo from '../../assets/Videos and audios/GameplaySilksong.mp4'
+import clickSound from '../../assets/Videos and audios/btnSound02.mp3'
+import hoverSound from '../../assets/Videos and audios/btnSound04.mp3'
 
 //Fotos
 import user1 from '../../assets/users/User01.jpg'
@@ -7,8 +12,6 @@ import user2 from '../../assets/users/User02.jpg'
 import user3 from '../../assets/users/User03.jpg'
 import user4 from '../../assets/users/User04.jpg'
 import user5 from '../../assets/users/User05.jpg'
-
-    
 
     // ── Feature Card ──────────────────────────────────────────────────────────────
     const FeatureCard = ({ number, color, title, description, icon, wide }) => (
@@ -42,6 +45,81 @@ import user5 from '../../assets/users/User05.jpg'
     const [activeUsers, setActiveUsers] = useState('0')
     const [satisfaction, setSatisfaction] = useState('0%')
     const statsRef = useRef(null)
+
+    const videoRef = useRef(null)
+    const audioRef = useRef(null)
+    const [volume, setVolume] = useState(0)
+    const [isDragging, setIsDragging] = useState(false)
+    const [showVolumeBar, setShowVolumeBar] = useState(false)
+    const volumeBarRef = useRef(null)
+    const [isMuted, setIsMuted] = useState(true)
+
+    // Calcula el ícono de volumen según el nivel
+    const VolumeIcon = useCallback(() => {
+    if (isMuted || volume === 0) return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 1.504a.5.5 0 0 1 0 .707L12.207 7l1.647 1.646a.5.5 0 0 1-.708.708L11.5 7.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 7 9.146 5.354a.5.5 0 0 1 .708-.708L11.5 6.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+        </svg>
+    )
+    if (volume < 0.35) return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zM6.312 6.39 8 5.04v5.92L6.312 9.61A.5.5 0 0 0 6 9.5H4v-3h2a.5.5 0 0 0 .312-.11z"/>
+        </svg>
+    )
+    if (volume < 0.7) return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm2.025 4a2.5 2.5 0 0 0 0-4 .5.5 0 1 1 0 1 1.5 1.5 0 0 1 0 3 .5.5 0 1 1 0 1 2.5 2.5 0 0 0 0-1z"/>
+        </svg>
+    )
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
+        <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
+        <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
+        </svg>
+    )
+    }, [volume, isMuted])
+
+    // Calcula volumen desde posición del drag en la barra vertical
+    const calcVolumeFromY = useCallback((clientY) => {
+        const bar = volumeBarRef.current
+        if (!bar) return
+        const rect = bar.getBoundingClientRect()
+        const relY = rect.bottom - clientY
+        const raw = relY / rect.height
+        const clamped = Math.min(1, Math.max(0, raw))
+        setVolume(clamped)
+        if (videoRef.current) {
+            videoRef.current.volume = clamped
+            videoRef.current.muted = clamped === 0
+            if (clamped > 0) setIsMuted(false)
+            else setIsMuted(true)
+        }
+    }, [])
+
+    const handleMouseDownVolume = useCallback((e) => {
+        e.preventDefault()
+        setIsDragging(true)
+        calcVolumeFromY(e.clientY)
+    }, [calcVolumeFromY])
+
+    const handleMouseMove = useCallback((e) => {
+        if (!isDragging) return
+        calcVolumeFromY(e.clientY)
+    }, [isDragging, calcVolumeFromY])
+
+    const handleMouseUp = useCallback(() => {
+        setIsDragging(false)
+    }, [])
+
+    // Touch support
+    const handleTouchMoveVolume = useCallback((e) => {
+        if (!isDragging) return
+        calcVolumeFromY(e.touches[0].clientY)
+    }, [isDragging, calcVolumeFromY])
+
+    
+
 
     // Parallax scroll effect
     useEffect(() => {
@@ -140,11 +218,45 @@ import user5 from '../../assets/users/User05.jpg'
 
     }, [])
 
+    useEffect(() => {
+    if (isDragging) {
+        window.addEventListener('mousemove', handleMouseMove)
+        window.addEventListener('mouseup', handleMouseUp)
+        window.addEventListener('touchmove', handleTouchMoveVolume)
+        window.addEventListener('touchend', handleMouseUp)
+  }
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove)
+    window.removeEventListener('mouseup', handleMouseUp)
+    window.removeEventListener('touchmove', handleTouchMoveVolume)
+    window.removeEventListener('touchend', handleMouseUp)
+  }
+}, [isDragging, handleMouseMove, handleMouseUp, handleTouchMoveVolume])
+
+    useEffect(() => {
+        const video = videoRef.current
+        if (!video) return
+        video.muted = true
+        video.volume = 0
+        video.play().catch(() => {})
+}   , [])
 
     const handleBtnClick = () => {
         setBtnClicked(true)
+        if (audioRef.current) {
+        audioRef.current.currentTime = 0
+        audioRef.current.play()
+    }
         setTimeout(() => setBtnClicked(false), 1800)
     }
+
+    const playHover = useCallback(() => {
+        const audio = new Audio(hoverSound)
+        audio.volume = 0.4
+        audio.play().catch(() => {})
+    }, [])
+
+    
 
     const features = [
         {
@@ -198,25 +310,89 @@ import user5 from '../../assets/users/User05.jpg'
 
         {/* ── HERO PARALLAX ── */}
         <section className="premium-hero">
-            <div className="premium-hero__bg-wrap">
-            <div className="premium-hero__bg" ref={parallaxRef} />
+
+        <audio ref={audioRef} src={clickSound} preload="auto" />
+
+        <div className="premium-hero__bg-wrap">
+            <video
+            ref={videoRef}
+            className="premium-hero__video"
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            disablePictureInPicture
+            />
             <div className="premium-hero__noise" />
             <div className="premium-hero__vignette" />
+        </div>
+
+
+        <div
+            className="volume-controller"
+            onMouseEnter={() => setShowVolumeBar(true)}
+            onMouseLeave={() => { if (!isDragging) setShowVolumeBar(false) }}
+        >
+            <div className={`volume-bar-wrap ${showVolumeBar || isDragging ? 'volume-bar-wrap--visible' : ''}`}>
+            <div
+                className="volume-bar-track"
+                ref={volumeBarRef}
+                onMouseDown={handleMouseDownVolume}
+                onTouchStart={(e) => { setIsDragging(true); calcVolumeFromY(e.touches[0].clientY) }}
+            >
+                <div
+                className="volume-bar-fill"
+                style={{ height: `${volume * 100}%` }}
+                />
+                <div
+                className="volume-bar-thumb"
+                style={{ bottom: `calc(${volume * 100}% - 8px)` }}
+                />
             </div>
-            <div className="premium-hero__content reveal reveal-up">
+            <span className="volume-percentage">{Math.round(volume * 100)}%</span>
+            </div>
+
+            {/* Botón ícono de volumen */}
+            <button
+                className="volume-btn"
+                onClick={() => {
+                if (isMuted) {
+                    const restored = volume > 0 ? volume : 0.5
+                    setIsMuted(false)
+                    setVolume(restored)
+                    if (videoRef.current) {
+                    videoRef.current.muted = false
+                    videoRef.current.volume = restored
+                    }
+                } else {
+                    setIsMuted(true)
+                    if (videoRef.current) {
+                    videoRef.current.muted = true
+                    }
+                    setVolume(0)
+                }
+                }}
+                aria-label="Controlar volumen"
+                >
+                <VolumeIcon />
+            </button>
+        </div>
+
+        <div className="premium-hero__content reveal reveal-up">
             <p className="premium-hero__eyebrow">System Upgrade Required</p>
             <h1 className="premium-hero__heading">
-                VUELVETE UN OPERADOR <span className="neon-text">RECOIL.</span>
+            VUELVETE UN OPERADOR <span className="neon-text">RECOIL.</span>
             </h1>
             <p className="premium-hero__sub">
-                Desbloquea todo el potencial cinético de la plataforma RECOIL.<br />
-                Influye en el catálogo, verifica tu estatus y obtén ventajas tácticas.
+            Desbloquea todo el potencial cinético de la plataforma RECOIL.<br />
+            Influye en el catálogo, verifica tu estatus y obtén ventajas tácticas.
             </p>
             <div className="premium-hero__scroll-hint">
-                <span>SCROLL</span>
-                <div className="scroll-line" />
+            <span>SCROLL</span>
+            <div className="scroll-line" />
             </div>
-            </div>
+        </div>
         </section>
 
         {/* ── OPERATIVE GRID ── */}
@@ -273,10 +449,10 @@ import user5 from '../../assets/users/User05.jpg'
                     </ul>
 
                     <button
-                    className={`cta-btn ${btnHovered ? 'cta-btn--hovered' : ''} ${btnClicked ? 'cta-btn--clicked' : ''}`}
-                    onMouseEnter={() => setBtnHovered(true)}
-                    onMouseLeave={() => setBtnHovered(false)}
-                    onClick={handleBtnClick}
+                        className={`cta-btn ${btnHovered ? 'cta-btn--hovered' : ''} ${btnClicked ? 'cta-btn--clicked' : ''}`}
+                        onMouseEnter={() => { setBtnHovered(true); playHover() }}
+                        onMouseLeave={() => setBtnHovered(false)}
+                        onClick={handleBtnClick}
                     >
                     <span className="cta-btn__glow" />
                     <span className="cta-btn__scanline" />
@@ -357,7 +533,7 @@ import user5 from '../../assets/users/User05.jpg'
             <div className="stat-box">
 
                 <div className="stat-box__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-people" viewBox="0 0 16 16">
                         <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
                     </svg>
                 </div>
@@ -378,7 +554,7 @@ import user5 from '../../assets/users/User05.jpg'
             </div>
             <div className="stat-box">
                 <div className="stat-box__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-bar-chart-line" viewBox="0 0 16 16">
   <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1zm1 12h2V2h-2zm-3 0V7H7v7zm-5 0v-3H2v3z"/>
 </svg>
                 </div>
@@ -450,7 +626,11 @@ import user5 from '../../assets/users/User05.jpg'
             </div>
             <h1 className="discord-heading">JOIN THE KINETIC CRITIQUE</h1>
             <p className="discord-sub">Be part of a high-octane community of analysts, developers, and pro-players. Real-time discussions, early review access, and direct links to the RECOIL staff.</p>
-            <button className="discord-btn">
+            <button className="discord-btn"
+                onMouseEnter={() => { setBtnHovered(true); playHover() }}
+                onMouseLeave={() => setBtnHovered(false)}
+                onClick={handleBtnClick}
+            >
                 JOIN THE DISCORD
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>

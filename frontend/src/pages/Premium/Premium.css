@@ -1542,3 +1542,146 @@
   box-shadow:
     0 0 20px rgba(156,255,147,0.14);
 }
+
+/* ─── HERO VIDEO ─────────────────────────────────────────────────────────── */
+.premium-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* ─── VOLUME CONTROLLER ──────────────────────────────────────────────────── */
+.volume-controller {
+  position: absolute;
+  bottom: 32px;
+  right: 40px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botón del ícono */
+.volume-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(156, 255, 147, 0.4);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+
+.volume-btn:hover {
+  background: rgba(156, 255, 147, 0.12);
+  border-color: rgba(156, 255, 147, 0.8);
+  box-shadow: 0 0 18px rgba(156, 255, 147, 0.35);
+  transform: scale(1.08);
+}
+
+.volume-btn:hover svg {
+  transform: scale(1.35);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 6px rgba(156, 255, 147, 0.7));
+}
+
+.volume-btn svg {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+}
+
+/* Wrapper de la barra vertical */
+.volume-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.volume-bar-wrap--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* Porcentaje */
+.volume-percentage {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--green);
+  font-weight: 700;
+  text-align: center;
+  min-width: 36px;
+}
+
+/* Track (la barra contenedora) */
+.volume-bar-track {
+  width: 10px;
+  height: 120px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(156, 255, 147, 0.2);
+  position: relative;
+  cursor: default;
+  overflow: visible;
+}
+
+/* Fill: gradiente verde → negro hacia arriba */
+.volume-bar-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(
+    to top,
+    #9CFF93 0%,
+    #00FC40 40%,
+    #003a00 100%
+  );
+  box-shadow: 0 0 10px rgba(156, 255, 147, 0.5);
+  transition: height 0.05s linear;
+  pointer-events: none;
+}
+
+/* Thumb (perilla de arrastre estilo Windows) */
+.volume-bar-thumb {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 16px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1.5px solid rgba(156, 255, 147, 0.7);
+  box-shadow:
+    0 0 8px rgba(156, 255, 147, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+  cursor: default;
+  transition: bottom 0.05s linear;
+  z-index: 2;
+}
+
+.volume-bar-thumb:hover {
+  background: var(--green);
+  box-shadow: 0 0 14px rgba(156, 255, 147, 0.7);
+}
+
+.volume-bar-thumb:hover {
+  background: var(--green);
+  box-shadow: 0 0 14px rgba(156, 255, 147, 0.7);
+}
