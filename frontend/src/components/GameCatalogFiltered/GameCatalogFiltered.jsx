@@ -42,6 +42,10 @@ const GameCatalogFiltered = () => {
     navigate(`/gamecatalogfiltered?genre=${encodeURIComponent(genre)}`)
   }
 
+  const onGameClick = id => {
+    navigate(`/game/${id}`)
+  }
+
 
 
   return (
@@ -118,7 +122,14 @@ const GameCatalogFiltered = () => {
         <div className='display-games__catalog'>
           {filteredGames.length > 0 ? (
             filteredGames.map(game => (
-              <div className="game-card" key={game.id}>
+              <div
+                className="game-card"
+                key={game.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => onGameClick(game.id)}
+                onKeyDown={(e) => { if (e.key === 'Enter') onGameClick(game.id) }}
+              >
                 <div>
                   <div className="rating-overlay">
                     <p className='user-score__number'>{game.rating}</p>

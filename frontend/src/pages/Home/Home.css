@@ -394,7 +394,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
+  box-sizing: content-box;
   padding: 128px 192px;
 }
 
