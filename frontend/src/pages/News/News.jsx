@@ -125,27 +125,27 @@ const News = () => {
 
       </div>
 
-      <section class="subscribe-section">
-        <div class="subscribe-container">
+      <section className="subscribe-section">
+        <div className="subscribe-container">
 
-          <span class="subscribe-tag">STAY_PROTOCOL_ACTIVE</span>
+          <span className="subscribe-tag">STAY_PROTOCOL_ACTIVE</span>
 
-          <h2 class="subscribe-title">
+          <h2 className="subscribe-title">
             RECEIVE DIRECT TRANSMISSIONS
           </h2>
 
-          <p class="subscribe-description">
+          <p className="subscribe-description">
             Get the latest patch notes, event details, and exclusive rewards delivered directly to your neural interface.
           </p>
 
-          <form class="subscribe-form">
+          <form className="subscribe-form">
             <input
               type="email"
               placeholder="INPUT EMAIL ADDRESS"
-              class="subscribe-input"
+              className="subscribe-input"
             />
 
-            <button class="subscribe-button">
+            <button className="subscribe-button">
               SUBSCRIBE
             </button>
           </form>

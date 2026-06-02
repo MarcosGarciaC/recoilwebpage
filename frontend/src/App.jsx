@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation} from "react-router-dom";
 
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
@@ -11,13 +11,15 @@ import GameCatalogFiltered from './components/GameCatalogFiltered/GameCatalogFil
 import GamePage from './pages/GamePage/GamePage';
 import News from './pages/News/News';
 import Premium from './pages/Premium/Premium';
+import Login from './pages/LoginRegister/LoginRegister';
 
 function App() {
-   const [count, setCount] = useState(0)
+   const location = useLocation();
+   const isAuthPage = location.pathname ==="/login" || location.pathname === "/register";
 
    return (
       <section>
-         <Navbar />
+         {!isAuthPage && <Navbar />}
          <Routes>
             <Route path="/" element={<Home />} />
             <Route path='/genders' element={<Genders />} />
@@ -25,8 +27,10 @@ function App() {
             <Route path='/game/:id' element={<GamePage />} />
             <Route path='/news' element={<News />} />
             <Route path="/premium" element={<Premium />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Login />} />
          </Routes>
-         <Footer />
+         {!isAuthPage && <Footer />}
       </section>
    )
 }

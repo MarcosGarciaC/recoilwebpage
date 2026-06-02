@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.login-page{
+    background: radial-gradient(
+        circle at top,
+        rgba(0,255,76,.08),
+        #090909 40%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container{
+    background-color: #0b0b0b;
+    border-radius: 30px;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 0 30px rgba(0,255,76,.15);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.container h1{
+    color: #ffffff;
+}
+
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+    color: #b3b3b3;
+}
+
+.container span{
+    font-size: 12px;
+    color: #8a8a8a;
+}
+
+.container a{
+    color: #00ff4c;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+    transition: .3s;
+}
+
+.container a:hover{
+    color: #ffffff;
+}
+
+.container button{
+    background: linear-gradient(
+        90deg,
+        #00ff4c,
+        #0e0e0e
+    );
+    color: #ffffff;
+    font-size: 12px;
+    padding: 12px 45px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0,255,76,.25);
+    transition: .3s;
+}
+
+.container button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,255,76,.4);
+}
+
+.container button.hidden{
+    background: transparent;
+    border: 2px solid #ffffff;
+    box-shadow: none;
+}
+
+.container button.hidden:hover{
+    border-color: #00ff4c;
+    color: #00ff4c;
+}
+
+.container form{
+    background-color: #0b0b0b;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.container input{
+    background-color: #151515;
+    border: 1px solid #202020;
+    color: #ffffff;
+    margin: 8px;
+    padding: 12px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    transition: .3s;
+}
+
+.container input::placeholder{
+    color: #666666;
+}
+
+.container input:focus{
+    border-color: #00ff4c;
+    box-shadow: 0 0 10px rgba(0,255,76,.2);
+}
+
+.form-container{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.active .sign-in{
+    transform: translateX(100%);
+}
+
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.social-icons{
+    margin: 20px 0;
+}
+/*Dividers son nuevos,si no gustan se pueden cambiar y dejar el espacio de ellos vacío*/
+/*Este es el inicio del estilo del divider*/
+.divider{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 5px 0 15px;
+}
+
+.divider::before,
+.divider::after{
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,.15);
+}
+
+.divider span{
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 50%;
+    margin: 0 12px;
+    display: block;
+}
+/*Este es el final del estilo del divider*/
+
+.social-icons a{
+    border: 1px solid #222222;
+    background-color: #151515;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    transition: .3s;
+}
+
+.social-icons a:hover{
+    border-color: #00ff4c;
+    color: #00ff4c;
+}
+
+.toggle-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle{
+    background:
+    linear-gradient(
+        175deg,
+        #00ff4c 0%,
+        #00c83b 20%,
+        #101010 70%,
+        #000000 100%
+    );
+
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-panel h1{
+    color: #ffffff;
+}
+
+.toggle-panel p{
+    color: #f0f0f0;
+}
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right{
+    transform: translateX(200%);
+}

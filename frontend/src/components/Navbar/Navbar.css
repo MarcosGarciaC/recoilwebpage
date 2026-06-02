@@ -48,6 +48,7 @@
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   animation: waveFlow 6s ease-in-out infinite;
 }
@@ -77,4 +78,100 @@
     background-position: 0% 50%;
     transform: translateY(0px);
   }
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/*.user-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}*/
+
+.user-section span{
+    color: #d0d0d0;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.profile-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #00ff41;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #00FF41;
+  color: #131313;
+
+  font-weight: 700;
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+.profile-avatar:hover{
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(0,255,65,.5);
+}
+
+.user-section{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    position: relative;
+}
+
+@media (max-width: 900px) {
+  .user-section span {
+    display: none;
+  }
+}
+
+.greeting-container{
+    position: relative;
+    min-width: 95px;
+    height: 20px;
+}
+
+.greeting{
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    transition:
+      opacity .8s ease,
+      transform .8s ease;
+}
+
+.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hide{
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.greeting-full{
+    white-space: nowrap;
+}
+
+.greeting-name{
+    white-space: nowrap;
 }
