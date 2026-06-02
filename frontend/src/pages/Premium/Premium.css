@@ -371,6 +371,7 @@
 .perks-list {
   gap: 22px;
   padding: 38px 0;
+  align-items: start;
 }
 
 /* texto de perks */
