@@ -84,7 +84,7 @@ const Navbar = () => {
       <div id="nb-right__side">
         {currentUser ? (
           <div className="user-section">
-            <div className='greeting-container' style={ showGreeting ? { minWidth:"95px" } : { minWidth:"60px" } }>
+            <div className='greeting-container'>
           <span className={`greeting greeting-full ${
             showGreeting ? "show" : "hide"
           }`}>
