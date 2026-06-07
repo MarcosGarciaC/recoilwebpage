@@ -13,6 +13,7 @@ import News from './pages/News/News';
 import ArticleNews from './pages/ArticleNews/ArticleNews';
 import Premium from './pages/Premium/Premium';
 import Login from './pages/LoginRegister/LoginRegister';
+import Profile from './pages/Profile/Profile';
 
 function App() {
    const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
             <Route path="/premium" element={<Premium />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
          </Routes>
          {!isAuthPage && <Footer />}
       </section>

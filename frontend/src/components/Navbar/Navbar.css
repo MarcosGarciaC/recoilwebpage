@@ -174,3 +174,13 @@
 .greeting-name{
     white-space: nowrap;
 }
+
+/* Ensure avatar images fill and are cropped to the circular frame */
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 50%;
+  display: block;
+}

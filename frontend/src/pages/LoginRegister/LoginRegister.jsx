@@ -73,6 +73,7 @@ function LoginRegister() {
       "justLoggedIn", 
       "true"
     );
+    try { window.dispatchEvent(new Event('userUpdated')) } catch (e) {}
     alert(`Bienvenido ${user.name}`);
     navigate("/");
   };

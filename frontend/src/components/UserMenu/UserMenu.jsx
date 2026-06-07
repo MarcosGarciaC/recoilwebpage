@@ -10,11 +10,20 @@ const UserMenu = ({ currentUser }) => {
         navigate("/");
         window.location.reload();
     };
+
+    const handleProfile = () => {
+        navigate("/profile");
+    };
+
   return (
     <div className="user-menu">
         <div className="user-menu-header">
             <div className="user-avatar-large">
-                {currentUser.name.charAt(0).toUpperCase()}
+                {currentUser?.avatar ? (
+                  <img src={currentUser.avatar} alt={currentUser.name} />
+                ) : (
+                  currentUser.name.charAt(0).toUpperCase()
+                )}
             </div>
             <div>
                 <h4>{currentUser.name}</h4>
@@ -22,7 +31,7 @@ const UserMenu = ({ currentUser }) => {
             </div>
         </div>
         <hr />
-        <button className="menu-item">
+        <button className="menu-item" onClick={handleProfile}>
             <i className="fa-solid fa-user"></i>
             Perfil
         </button>

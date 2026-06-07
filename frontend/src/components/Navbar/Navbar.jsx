@@ -5,9 +5,9 @@ import UserMenu from '../UserMenu/UserMenu';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const currentUser = JSON.parse(
-    localStorage.getItem("currentUser")
-  );
+  const [currentUser, setCurrentUser] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('currentUser')) } catch (e) { return null }
+  })
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -60,6 +60,14 @@ const Navbar = () => {
     }
   }, [currentUser]);
 
+  useEffect(() => {
+    const onUserUpdated = () => {
+      try { setCurrentUser(JSON.parse(localStorage.getItem('currentUser'))) } catch (e) {}
+    }
+    window.addEventListener('userUpdated', onUserUpdated)
+    return () => window.removeEventListener('userUpdated', onUserUpdated)
+  }, [])
+
   return (
     <nav id='navbar'>
       <div id='nb-left__side'>
@@ -90,17 +98,21 @@ const Navbar = () => {
               {currentUser.name}
               </span>
             </div>
-          <div ref={menuRef}>
-          <div
-          className='profile-avatar' 
-          onClick={() => setMenuOpen(prev => !prev)}
-          >
-            {currentUser.name.charAt(0).toUpperCase()}
-          </div>
-          {menuOpen && (
-            <UserMenu currentUser={currentUser}/>
-          )}
-          </div>
+            <div ref={menuRef}>
+            <div
+              className='profile-avatar'
+              onClick={() => setMenuOpen(prev => !prev)}
+            >
+              {currentUser?.avatar ? (
+                <img src={currentUser.avatar} alt={currentUser.name} />
+              ) : (
+                (currentUser.name || 'U').charAt(0).toUpperCase()
+              )}
+            </div>
+            {menuOpen && (
+              <UserMenu currentUser={currentUser} />
+            )}
+            </div>
           </div>
         ) : (
         <a onClick={() => navigate("/login")} className="login-link">

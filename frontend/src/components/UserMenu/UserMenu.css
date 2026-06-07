@@ -42,6 +42,13 @@
 
     font-weight: 700;
     font-size: 22px;
+    overflow: hidden;
+}
+.user-avatar-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .user-menu-header h4{
