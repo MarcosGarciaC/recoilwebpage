@@ -20,13 +20,21 @@
   justify-content: center;
 }
 
-#nb-left__side,
-#nb-right__side {
+#nb-left__side {
   width: 150px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#nb-right__side {
+  min-width: 150px; 
+  width: auto;      
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
+  padding-right: 20px;
 }
 
 .wave-logo {
@@ -145,21 +153,29 @@
 .greeting-container{
     position: relative;
     height: 20px;
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
 }
 
 .greeting{
     position: absolute;
-    left: 0;
-    top: 0;
+    right: 0;
+    white-space: nowrap;
+
+    pointer-events: none;
 
     transition:
       opacity .8s ease,
-      transform .8s ease;
+      transform .8s ease,
+      visibility .8s;
 }
 
 .show{
     opacity: 1;
     transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .hide{
