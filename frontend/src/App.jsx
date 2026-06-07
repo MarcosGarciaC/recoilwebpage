@@ -10,6 +10,7 @@ import Genders from './pages/Genders/Genders';
 import GameCatalogFiltered from './components/GameCatalogFiltered/GameCatalogFiltered';
 import GamePage from './pages/GamePage/GamePage';
 import News from './pages/News/News';
+import ArticleNews from './pages/ArticleNews/ArticleNews';
 import Premium from './pages/Premium/Premium';
 import Login from './pages/LoginRegister/LoginRegister';
 
@@ -26,6 +27,7 @@ function App() {
             <Route path='/gamecatalogfiltered' element={<GameCatalogFiltered />} />
             <Route path='/game/:id' element={<GamePage />} />
             <Route path='/news' element={<News />} />
+            <Route path='/news/article' element={<ArticleNews />} />
             <Route path="/premium" element={<Premium />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Login />} />

@@ -20,7 +20,8 @@ const GamePage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [showAllReviews, setShowAllReviews] = useState(false)
 
-  const criticScore = (game?.rating || 0)
+  const averageRating = reviews.length ? reviews.reduce((sum, r) => sum + (Number(r.rating) || 0), 0) / reviews.length : 0
+  const criticScore = averageRating
 
   const handleRatingClick = (value) => {
     setRating(value)

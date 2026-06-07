@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './News.css'
 import { news } from '../../assets/assets.js'
 
@@ -30,6 +31,8 @@ const News = () => {
   const currentCards = filteredCards.slice(startIndex, startIndex + itemsPerPage)
 
 
+  const navigate = useNavigate()
+
   return (
     <div className='news'>
       <header className='news-hero-section'>
@@ -49,7 +52,7 @@ const News = () => {
                   <div className="news-btn-overlay">
                     <button
                       className='news-btn-review'
-                      onClick={() => navigate(item.article_link)}
+                      onClick={() => navigate('/news/article')}
                     >
                       Leer artículo
                     </button>
@@ -83,7 +86,14 @@ const News = () => {
       </div>
       <div className='news-card__box'>
         {currentCards.map((item, index) => (
-          <div className='news-card' key={`${item.news_title}-${index}`}>
+          <div
+            className='news-card'
+            key={`${item.news_title}-${index}`}
+            onClick={() => navigate('/news/article')}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => { if (e.key === 'Enter') navigate('/news/article') }}
+          >
             <img src={item.background_image} alt={item.news_title} />
             <h3>{item.news_title}</h3>
             <p>{item.description}</p>
