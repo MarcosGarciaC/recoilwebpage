@@ -146,7 +146,7 @@ export const games = [
     price: "$59.99",
     platforms: ["PC", "PS5"],
     image: "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/The_Last_of_Us_Part_I_cover.jpg/250px-The_Last_of_Us_Part_I_cover.jpg",
-    description: "Historia emocional de supervivencia en un mundo postapocalíptico."
+    description: "En un entorno posapocalíptico donde los infectados (humanos que se convierten en criaturas salvajes muy agresivas debido a un hongo mutado) deambulan por el mundo, Joel, un sobreviviente curtido, tiene la tarea de guiar a una adolescente llamada Ellie fuera de una zona de cuarentena militar. La misión se transforma en un viaje desgarrador a través de un Estados Unidos devastado, mientras Joel hace todo lo posible para mantener a Ellie con vida. "
   },
   {
     id: 12,

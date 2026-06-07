@@ -1,5 +1,5 @@
 .game-header {
-  width: 100vw;
+  width: 100%;
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -89,8 +89,171 @@
   gap: 10px;
   box-sizing: border-box;
   padding: 16px 104.72px;
-  background-color: #51e443;
+  background: linear-gradient(110deg, #9CFF93 0%, #00FC40 100%);
   border: none;
   color: #006413;
   font-weight: bold;
 }
+
+.btn-add_fav:hover {
+  background: linear-gradient(110deg, #000000 0%, #292929 100%);
+  color: white;
+  transition: all ease 0.3s;
+}
+
+.btn-wrt__opinion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 16px 104.72px;
+  background: #20201faf;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-wrt__opinion:hover {
+  background: white;
+  color: black;
+  transition: all ease 0.3s;
+}
+
+/* Community section styles */
+.community-section {
+  display: flex;
+  gap: 32px;
+  padding: 48px 32px;
+  box-sizing: border-box;
+}
+
+.community-left {
+  width: 35%;
+  gap: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.critic-box {
+  background: rgba(10,10,10,0.6);
+  padding: 32px;
+  border-radius: 8px;
+  color: #cfcfcf;
+}
+
+.critic-d {
+  display: flex;
+  gap: 20px;
+}
+
+.critic-score {
+  font-size: 96px;
+  color: #9CFF93;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.critic-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.stars { 
+  color: #9CFF93;
+  font-size: 30px;
+}
+
+.meta-sub {
+  color: #ffffff38;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.description-side {
+  box-sizing: border-box;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.veredict-title {
+  color: #9CFF93;
+  margin-top: 16px;
+  font-weight: 700;
+  letter-spacing: 4.8px;
+  font-size: 15px;
+}
+
+.veredict-text {
+  color: #bdbdbd;
+  margin-top: 12px;
+  line-height: 1.6;
+  text-align: justify;
+  text-transform: uppercase;
+  line-height: 35px;
+}
+
+.community-right {
+  width: 65%;
+}
+
+.community-title {
+  color: white;
+  margin-bottom: 16px;
+  font-size: 36px;
+  letter-spacing: -1.8px;
+  margin-left: 13px;
+  line-height: 100px;
+  border-bottom: #99999944 1px solid;
+  margin-bottom: 50px;
+}
+
+.reviews-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.review-card {
+  background: #1A1A1A;
+  border-radius: 6px;
+  flex: 0 0 calc((100% - 32px) / 3);
+  box-sizing: border-box;
+  padding-top: 24px;
+  padding-bottom: 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+  border: #262626 1px solid;
+  max-width: 520px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.review-user { font-weight: 700; color: white }
+.review-score { background:#0f2b18; padding:6px 8px; border-radius:6px; color:#9edc8f; font-weight: bold;}
+.review-text { color:#bdbdbd }
+
+.submit-review {
+  background: rgba(15,15,15,0.6);
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.rating-buttons { display:flex; gap:8px; margin:12px 0 }
+.rating-btn { background:#222; color:#999; border:none; padding:10px 12px; border-radius:4px }
+.rating-btn.active { background:#444; color:#fff }
+.review-input { width:100%; height:100px; background:#1b1b1b; color:#ddd; border:none; padding:12px; margin:12px 0 }
+.review-error { color:#ff7373; margin: 8px 0 0; font-size: 14px; }
+.upload-btn { background:#fff; color:black; padding:12px 24px; border:none; font-weight:700 }
+.show-all-btn { margin-top: 16px; margin-bottom: 50px; padding: 12px 20px; border: none; background: #9CFF93; color: #081a08; font-weight: 700; cursor: pointer; border-radius: 6px; }
+.show-all-btn:hover { background: #7fe067; }

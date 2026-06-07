@@ -1,12 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './GamePage.css'
 import { useParams, useNavigate } from 'react-router-dom'
-import { games } from '../../assets/assets.js'
+import { games, users } from '../../assets/assets.js'
 
 const GamePage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const game = games.find(g => g.id === Number(id))
+
+  const initialReviews = users.flatMap(u => (
+    u.recent_reviews
+      .filter(r => r.game_id === Number(id))
+      .map(r => ({ ...r, username: u.username }))
+  ))
+
+  const [reviews, setReviews] = useState(initialReviews)
+  const [rating, setRating] = useState(4)
+  const [reviewText, setReviewText] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [showAllReviews, setShowAllReviews] = useState(false)
+
+  const criticScore = (game?.rating || 0)
+
+  const handleRatingClick = (value) => {
+    setRating(value)
+    setErrorMessage('')
+  }
+
+  const handleReviewSubmit = () => {
+    if (!reviewText.trim()) {
+      setErrorMessage('Por favor escribe tu opinión antes de subirla.')
+      return
+    }
+
+    const newReview = {
+      username: 'Tú',
+      rating,
+      comment: reviewText.trim(),
+      game_id: Number(id)
+    }
+
+    setReviews([newReview, ...reviews])
+    setReviewText('')
+    setRating(4)
+    setErrorMessage('')
+  }
+
+  const displayedReviews = showAllReviews ? reviews : reviews.slice(0, 3)
 
   if (!game) {
     return (
@@ -30,10 +70,10 @@ const GamePage = () => {
                 <p>DEV: <span className='green-color'>{game.developer}</span></p>
                 <p>
                   PLATFORM: <span className='white-color'>
-                  {Array.isArray(game.platforms)
-                    ? game.platforms.join(' / ')
-                    : game.platforms}
-                    </span>
+                    {Array.isArray(game.platforms)
+                      ? game.platforms.join(' / ')
+                      : game.platforms}
+                  </span>
                 </p>
 
                 <p>GENRE: <span className='white-color'>{game.genre}</span></p>
@@ -43,19 +83,84 @@ const GamePage = () => {
             </div>
 
             <div className="header-desc__right">
-              <button className='btn-add_fav'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" classname="bi bi-heart-fill" viewBox="0 0 16 16">
-  <path fill-Rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+              <button className='btn-add_fav'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
 </svg> AGREGAR A FAV</button>
               <button>ESCRIBE UNA RESEÑA</button>
             </div>
           </div>
         </div>
       </header>
+      <section className="community-section">
+        <div className="community-left">
+          <div className="critic-box">
+            <div className='critic-d'>
+              <h1 className="critic-score">{criticScore}</h1>
+              <div className="critic-meta">
+                <div className="stars">★★★★★</div>
+                <div className="meta-sub"><p>Based on {reviews.length || 142} reviews</p></div>
+              </div>
+            </div>
+          </div>
+          <div className='description-side'>
+           <h3 className="veredict-title">DESCRIPCION</h3>
+            <p className="veredict-text">{game.description}</p>
+          </div>
+        </div>
 
-      <main className='game-details'>
-        <h2>Descripción</h2>
-        <p>{game.description}</p>
-      </main>
+        <div className="community-right">
+          <h2 className="community-title">LO QUE PIENSA LA COMUNIDAD</h2>
+
+          <div className="reviews-row">
+            {displayedReviews.length > 0 ? displayedReviews.map((r, idx) => (
+              <div key={idx} className="review-card">
+                <div className="review-header">
+                  <p className="review-user">{r.username}</p>
+                  <p className="review-score">{r.rating}/5</p>
+                </div>
+                <p className="review-text">{r.comment}</p>
+              </div>
+            )) : (
+              <div className="review-card">
+                <p className="review-text">Aún no hay reseñas. Sé el primero en dejar una opinión.</p>
+              </div>
+            )}
+          </div>
+          {reviews.length > 3 && (
+            <button
+              type="button"
+              className="show-all-btn"
+              onClick={() => setShowAllReviews(prev => !prev)}
+            >
+              {showAllReviews ? 'Ocultar comentarios' : 'Ver todos los comentarios'}
+            </button>
+          )}
+
+          <div className="submit-review">
+            <h3>TRANSMIT YOUR REVIEW</h3>
+            <div className="rating-buttons">
+              {[1, 2, 3, 4, 5].map(n => (
+                <button
+                  key={n}
+                  type="button"
+                  className={`rating-btn ${n === rating ? 'active' : ''}`}
+                  onClick={() => handleRatingClick(n)}
+                >
+                  {String(n).padStart(2, '0')}
+                </button>
+              ))}
+            </div>
+            <textarea
+              className="review-input"
+              placeholder="TYPE YOUR EXPERIENCE HERE..."
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
+            />
+            {errorMessage && <p className="review-error">{errorMessage}</p>}
+            <button type="button" className="upload-btn" onClick={handleReviewSubmit}>UPLOAD REVIEW</button>
+          </div>
+        </div>
+      </section>
     </section>
   )
 }
