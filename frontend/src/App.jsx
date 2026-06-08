@@ -14,6 +14,8 @@ import ArticleNews from './pages/ArticleNews/ArticleNews';
 import Premium from './pages/Premium/Premium';
 import Login from './pages/LoginRegister/LoginRegister';
 import Profile from './pages/Profile/Profile';
+import Settings from './pages/Settings/Settings';
+import EasterEgg from './pages/EasterEgg/EasterEgg';
 
 function App() {
    const location = useLocation();
@@ -33,6 +35,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/Chochita" element={<EasterEgg />} />
          </Routes>
          {!isAuthPage && <Footer />}
       </section>

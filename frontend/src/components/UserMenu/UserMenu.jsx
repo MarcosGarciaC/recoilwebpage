@@ -15,6 +15,10 @@ const UserMenu = ({ currentUser }) => {
         navigate("/profile");
     };
 
+    const handleSettings = () => {
+        navigate("/settings");
+    };
+
   return (
     <div className="user-menu">
         <div className="user-menu-header">
@@ -41,7 +45,7 @@ const UserMenu = ({ currentUser }) => {
             Métodos de pago
         </button>
 
-        <button className="menu-item">
+        <button className="menu-item" onClick={handleSettings}>
             <i className="fa-solid fa-gear"></i>
             Ajustes
         </button>
