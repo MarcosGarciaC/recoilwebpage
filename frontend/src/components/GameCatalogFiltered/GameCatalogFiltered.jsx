@@ -28,16 +28,37 @@ const GameCatalogFiltered = () => {
   const normalizedGenre = normalizeText(selectedGenre)
 
   const [score, setScore] = useState(5)
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const [selectedPlatforms, setSelectedPlatforms] = useState([])
+
+  const togglePlatform = (platformId) => {
+    setSelectedPlatforms(prev =>
+      prev.includes(platformId)
+        ? prev.filter(p => p !== platformId)
+        : [...prev, platformId]
+    )
+  }
 
   const filteredGames = games.filter(game => {
-    const matchesGenre = selectedGenre
-      ? normalizeText(game.genre).includes(normalizedGenre)
-      : true
+  const matchesGenre = selectedGenre
+    ? normalizeText(game.genre).includes(normalizedGenre)
+    : true
 
-    const matchesScore = game.rating <= score
+  const matchesScore = game.rating <= score
 
-    return matchesGenre && matchesScore
-  })
+  const matchesSearch = searchQuery
+    ? normalizeText(game.title).includes(normalizeText(searchQuery))
+    : true
+
+  const matchesPlatform = selectedPlatforms.length === 0
+    ? true
+    : selectedPlatforms.some(p => game.platforms?.includes(p))
+
+  return matchesGenre && matchesScore && matchesSearch && matchesPlatform
+})
+
+
   const onGenreClick = genre => {
     navigate(`/gamecatalogfiltered?genre=${encodeURIComponent(genre)}`)
   }
@@ -52,6 +73,23 @@ const GameCatalogFiltered = () => {
     <div className='game-catalog-filtered-page'>
       <aside>
         <p className='aside-title'>Refine Results</p>
+        <div className='search-filter'>
+          <p className='p-number'>BÚSQUEDA POR NOMBRE</p>
+          <div className={`search-input-wrapper ${searchQuery ? 'has-value' : ''}`}>
+            <i className='bi bi-search'></i>
+            <input
+              type='text'
+              placeholder='Buscar juego...'
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className='search-clear-btn' onClick={() => setSearchQuery('')} title='Limpiar'>
+                <i className='bi bi-x-lg'></i>
+              </button>
+            )}
+          </div>
+        </div>
         <div className='genre-filter'>
           <p className='p-number'>GENRE SELECTION</p>
 
@@ -89,24 +127,33 @@ const GameCatalogFiltered = () => {
           />
         </div>
         <div className='platform'>
-          <p className='p-number'>SELECCION DE PLATAFORMA</p>
-          <div id='checkbox-list'>
-            <label>
-              <input type='checkbox' />
-              PLAYSTATION 5
-            </label>
-
-            <label>
-              <input type='checkbox' />
-              PC / WINDOWS
-            </label>
-
-            <label>
-              <input type='checkbox' />
-              XBOX SERIES X
-            </label>
+          <p className='p-number'>SELECCIÓN DE PLATAFORMA</p>
+          <div className='platform-checkbox-list'>
+            {[
+              { id: 'PS5',  label: 'PlayStation 5', sub: 'Sony Interactive Entertainment' },
+              { id: 'PC',   label: 'PC / Windows',  sub: 'Microsoft Windows 10 / 11' },
+              { id: 'Xbox', label: 'Xbox Series X', sub: 'Microsoft Xbox' },
+            ].map(({ id, label, sub }) => (
+              <label key={id} className={`platform-label ${selectedPlatforms.includes(id) ? 'active' : ''}`}>
+                <input
+                  type='checkbox'
+                  checked={selectedPlatforms.includes(id)}
+                  onChange={() => togglePlatform(id)}
+                />
+                <div className='platform-info'>
+                  <span className='platform-name'>{label}</span>
+                  <span className='platform-sub'>{sub}</span>
+                </div>
+                <div className='platform-custom-checkbox'>
+                  <svg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <path d='M2 6l3 3 5-5' stroke='#006413' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                  </svg>
+                </div>
+              </label>
+            ))}
           </div>
         </div>
+
       </aside>
 
       <main className='catalog-results'>

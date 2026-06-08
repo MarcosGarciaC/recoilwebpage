@@ -4,6 +4,10 @@ import CODN from './games/Call-of-Duty-–-Is-this-the-new-map-for-Warzone-2-1.j
 import FTN from './games/maxresdefault.jpg';
 import H5  from './games/header (5).jpg'
 import H6  from './games/header (6).jpg'
+import forniteFoto from './games/ImagenJuegoFornite.jpg'
+import MinecraftFoto from './games/ImagenJuegoMC.jpg'
+import ApexFoto from './games/ImagenJuegoApex.jpg'
+import SpidermanRemasteredFoto from './games/ImagenJuegoSpidermanRemastered.jpg'
 
 export const header_games = [
   {
@@ -61,7 +65,7 @@ export const games = [
     rating: 4.2,
     price: "Free",
     platforms: ["PC", "PS5", "Xbox", "Switch"],
-    image: "https://static.wikia.nocookie.net/fortnite/images/a/ad/Fortnite_%28Update_v40.00%29_-_Cover_Art_-_Fortnite.jpg/revision/latest/scale-to-width-down/1000?cb=20260319072739",
+    image: forniteFoto,
     description: "Battle royale con construcción, eventos en vivo y constantes actualizaciones."
   },
   {
@@ -109,7 +113,7 @@ export const games = [
     rating: 4.7,
     price: "$26.95",
     platforms: ["PC", "PS5", "Xbox", "Switch", "Mobile"],
-    image: "https://en.wikinews.org/wiki/File:Minecraft_game_cover.jpeg",
+    image: MinecraftFoto,
     description: "Construye, explora y sobrevive en un mundo infinito hecho de bloques."
   },
   {
@@ -121,7 +125,7 @@ export const games = [
     rating: 4.3,
     price: "Free",
     platforms: ["PC", "PS5", "Xbox", "Switch"],
-    image: "https://en.wikipedia.org/wiki/File:Apex_legends_cover.jpg",
+    image: ApexFoto,
     description: "Battle royale dinámico con héroes y habilidades únicas."
   },
   {
@@ -253,7 +257,7 @@ export const games = [
     rating: 4.8,
     price: "$49.99",
     platforms: ["PC", "PS5"],
-    image: "https://en.wikipedia.org/wiki/File:Spider-Man_PS4_cover.jpg",
+    image: SpidermanRemasteredFoto,
     description: "Balancea por Nueva York en una aventura de superhéroes."
   }
 ]
