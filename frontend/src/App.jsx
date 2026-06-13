@@ -16,10 +16,12 @@ import Login from './pages/LoginRegister/LoginRegister';
 import Profile from './pages/Profile/Profile';
 import Settings from './pages/Settings/Settings';
 import EasterEgg from './pages/EasterEgg/EasterEgg';
+import Payment from './pages/Payment/Payment';
 
 function App() {
    const location = useLocation();
-   const isAuthPage = location.pathname ==="/login" || location.pathname === "/register";
+   const isAuthPage = location.pathname ==="/login" || location.pathname === "/register" ||
+   location.pathname === "/payment";
 
    return (
       <section>
@@ -37,6 +39,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/Chochita" element={<EasterEgg />} />
+            <Route path="/payment" element={<Payment />} />
          </Routes>
          {!isAuthPage && <Footer />}
       </section>

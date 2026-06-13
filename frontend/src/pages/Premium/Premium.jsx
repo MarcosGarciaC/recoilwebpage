@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState,useCallback } from 'react'
 import './Premium.css'
+import { useNavigate } from 'react-router-dom'
 
 // Video y audio
 import heroVideo from '../../assets/Videos and audios/GameplaySilksong.mp4'
@@ -40,6 +41,7 @@ import user5 from '../../assets/users/User05.jpg'
 
     // ── Main Premium Page ─────────────────────────────────────────────────────────
     const Premium = () => {
+    const navigate = useNavigate();
     const parallaxRef = useRef(null)
     const [btnHovered, setBtnHovered] = useState(false)
     const [btnClicked, setBtnClicked] = useState(false)
@@ -243,13 +245,17 @@ import user5 from '../../assets/users/User05.jpg'
 }   , [])
 
     const handleBtnClick = () => {
-        setBtnClicked(true)
-        if (audioRef.current) {
-        audioRef.current.currentTime = 0
-        audioRef.current.play()
+    setBtnClicked(true);
+
+    if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play();
     }
-        setTimeout(() => setBtnClicked(false), 1800)
-    }
+
+    setTimeout(() => {
+        navigate("/payment");
+    }, 1800);
+};
 
     const playHover = useCallback(() => {
         const audio = new Audio(hoverSound)
