@@ -67,6 +67,26 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 350px;
+}
+
+.review-buttons-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+}
+
+.review-buttons-row .btn-wrt__opinion {
+  flex: 1;
+  padding: 16px 20px;
+}
+
+.review-buttons-row .btn-report {
+  width: 56px;
+  min-width: 56px;
+  height: auto;
 }
 
 .btn-add_fav {
@@ -98,23 +118,57 @@
 }
 
 .btn-wrt__opinion {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  box-sizing: border-box;
-  padding: 16px 104.72px;
-  background: #20201faf;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:#20201faf;
+  border:none;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+
+  padding:16px 20px;
 }
 
 .btn-wrt__opinion:hover {
   background: white;
   color: black;
   transition: all ease 0.3s;
+}
+
+.btn-report{
+  width:56px;
+  height:56px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:linear-gradient(
+    110deg,
+    #9CFF93 0%,
+    #00FC40 100%
+  );
+
+  border:none;
+  color:#006413;
+  cursor:pointer;
+
+  flex-shrink:0;
+
+  transition:all .3s ease;
+}
+
+.btn-report:hover{
+  background:linear-gradient(
+    110deg,
+    #000000 0%,
+    #292929 100%
+  );
+
+  color:white;
 }
 
 /* ── COMMUNITY SECTION ── */
@@ -245,10 +299,11 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 20px 0px;
 }
 
 .own-review-label {
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 3px;
   color: #9CFF93;
   text-transform: uppercase;
@@ -538,20 +593,27 @@
 /* ── REVIEW CARDS ── */
 .reviews-row {
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+  margin : 20px 0px;
 }
 
 .review-card {
-  background: #1a1a1a;
-  border-radius: 8px;
-  flex: 0 0 calc((100% - 32px) / 3);
-  box-sizing: border-box;
-  padding: 24px;
-  border: 1px solid #262626;
-  cursor: default;
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  background:#171717;
+  border:1px solid #262626;
+  border-radius:8px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  position:relative;
+  overflow:hidden;
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease,
+    transform .35s ease;
 }
 
 .review-card:hover {
