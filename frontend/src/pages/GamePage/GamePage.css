@@ -840,3 +840,65 @@
   font-weight:700;
   font-size:18px;
 }
+
+/* Trailer */
+.trailer-link{
+  margin-top:24px;
+
+  display:flex;
+  align-items:center;
+  gap:16px;
+
+  padding:14px 18px;
+
+  background:#111;
+  border:1px solid #242424;
+  border-radius:8px;
+
+  text-decoration:none;
+
+  transition:.3s ease;
+}
+
+.trailer-link:hover{
+  border-color:#9CFF93;
+  background:#141f14;
+}
+
+.trailer-icon{
+  width:44px;
+  height:44px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  border-radius:50%;
+
+  background:#9CFF93;
+  color:#081a08;
+}
+
+.trailer-link:hover .trailer-icon{
+  transform:scale(1.08);
+  box-shadow:0 0 20px rgba(255,0,0,.35);
+}
+
+.trailer-info{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.trailer-info span{
+  color:#9CFF93;
+  font-size:10px;
+  letter-spacing:3px;
+  font-weight:700;
+}
+
+.trailer-info p{
+  margin:0;
+  color:#d0d0d0;
+  font-size:13px;
+}

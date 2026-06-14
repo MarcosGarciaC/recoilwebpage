@@ -9,6 +9,7 @@ import { games } from '../../assets/assets.js'
 import fps_category from '../../assets/banner_tac_stance.jpg'
 import rpg_category from '../../assets/adventure.webp'
 import sim_category from '../../assets/unnamed.png'
+import indie_category from '../../assets/pixel-art.jpg'
 
 const Home = () => {
   const carouselRef = useRef(null)
@@ -95,7 +96,7 @@ const Home = () => {
                   <h2 className='hero-overlay__heading'>{game.game_name}</h2>
                   <p className='hero-overlay__text'>{game.game_description}</p>
                   <div className="btn-overlay">
-                    <button className='btn-review' onClick={() => navigate(game.game_link)}>Leer reseñas</button>
+                    <button className='btn-review' onClick={() => navigate(`/game/${5}`)}>Leer reseñas</button>
                     <button className='btn-gameplay' onClick={() => window.open(game.game_video, "_blank")}>Ver Gameplay</button>
                   </div>
                 </div>
@@ -116,33 +117,38 @@ const Home = () => {
         </div>
         {/*BENTO GRID */}
         <div className="categories-box">
-          <div className="box" style={{ gridArea: "box-1" }}>
+          <div className="box category-box glow-green" style={{ gridArea: "box-1" }} onClick={() => navigate('gamecatalogfiltered?genre=Acción')}>
             <img src={fps_category} alt="" className='' />
             <div className="categorie-info">
-              <p className='p-number width'>01 / Genre</p>
+              <p className='p-number width'>Top 1 / Accion</p>
               <h4 className='h4-gener width'>FPS Tactico</h4>
               <p className='p-description width'>Precisión que presiona y ejecuta un abrumador momento en los videojuegos</p>
-              <a className='link-to__page'>Explora más</a>
+              <a className='link-to__page' >Explora más </a>
             </div>
           </div>
-          <div className="box" style={{ gridArea: "box-2" }}>
+          <div className="box category-box glow-blue" style={{ gridArea: "box-2" }} onClick={() => navigate('gamecatalogfiltered?genre=RPG')}>
             <img src={rpg_category} alt="" className='' />
             <div className="categorie-info">
-              <p className='p-number width blue-color'>02 / World Building</p>
+              <p className='p-number width blue-color'>Top 2 / Mundo abierto</p>
               <h4 className='h4-gener width'>RPG MUNDO ABIERTO</h4>
-              <a className='link-to__page'>Explora más</a>
+              <p className='p-description width'>Forja tu propia historia en mundos inmensos llenos de secretos, aventuras y decisiones</p>
+              <a className='link-to__page' >Explora más</a>
             </div></div>
-          <div className="box" style={{ gridArea: "box-3" }}>
-            <div className="categorie-info indie">
-              <p className='p-number width purple-color'>03 / RADAR</p>
+          <div className="box category-box glow-purple" style={{ gridArea: "box-3" }} onClick={() => navigate('gamecatalogfiltered?genre=Indie')}>
+            <img src={indie_category} alt="" className='' />
+            <div className="categorie-info">
+              <p className='p-number width purple-color'>Top 3 / Desafio</p>
               <h4 className='h4-gener width'>Gemas Indie</h4>
-              <a className='link-to__page hidden-cgr'>HIDDEN</a>
+              <p className='p-description width'>Pequeños estudios, grandes historias y creatividad que rompe todas las reglas</p>
+              <a className='link-to__page' >Explora más</a>
             </div></div>
-          <div className="box" style={{ gridArea: "box-4" }}>
+          <div className="box category-box glow-orange" style={{ gridArea: "box-4" }} onClick={() => navigate('gamecatalogfiltered?genre=Simulacón')}>
             <img src={sim_category} alt="" className='' />
             <div className="categorie-info">
-              <h4 className='h4-gener width'>ultra sim</h4>
-              <a className='link-to__page'>Explora más</a>
+              <p className='p-number width orange-color'>Top 4 / Experiencia</p>
+              <h4 className='h4-gener width'>Simulaciones VR</h4>
+              <p className='p-description width'>Vive experiencias inmersivas donde cada movimiento te acerca a otra realidad</p>
+              <a className='link-to__page' >Explora más</a>
             </div></div>
         </div>
       </section>
@@ -161,7 +167,7 @@ const Home = () => {
         <div className='game-cards__carousel' ref={carouselRef}>
           {games.map((game, index) => {
             return (
-              <div className="game-card" key={index}>
+              <div className="game-card" key={index} onClick={() => navigate(`/game/${game.id}`)}>
                 <div>
                   <div className="rating-overlay">
                     <p className='user-score__number'>{game.rating}</p>

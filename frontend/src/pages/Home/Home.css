@@ -232,14 +232,8 @@
   color: #AC89FF;
 }
 
-.indie {
-  background: #262626 !important
-}
-
-.hidden-cgr {
-  font-size: 34px !important;
-  color: #ffffff16 !important;
-  padding-bottom: 10px;
+.orange-color{
+  color:#FF9F43
 }
 
 #elite-rating {
@@ -548,4 +542,83 @@
 .game-card:hover .rating-overlay {
   background: rgba(0,0,0,0.9);
   transform: scale(1.08);
+}
+
+.category-box {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.category-box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0) scale(1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.category-box:hover img {
+  transform: translateZ(0) scale(1.06);
+}
+
+/* glow overlay — color set per box via CSS variable */
+.category-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    ellipse at bottom left,
+    var(--glow-color) 40%,
+    transparent 60%
+  );
+  mix-blend-mode: soft-light;
+}
+
+.category-box:hover::after {
+  opacity: 0.55;
+}
+
+.category-box:hover .link-to__page,
+.category-box .link-to__page:hover {
+  color: var(--glow-color);
+  border-bottom: 1px solid var(--glow-color);
+}
+
+.category-box::after {
+  background: radial-gradient(
+    ellipse at bottom left,
+    var(--glow-color) 40%,
+    transparent 60%
+  );
+}
+
+.category-box .link-to__page::after {
+  content: '→';
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.category-box:hover .link-to__page::after {
+  opacity: 1;
+}
+
+.categorie-info.indie {
+  background: linear-gradient(to top, #0E0E0E, rgba(38,38,38,0.3));
+}
+
+/* Per-category glow colors, matching p-number colors */
+.category-box.glow-green   { --glow-color: #9CFF93; }
+.category-box.glow-blue    { --glow-color: #00E3FD; }
+.category-box.glow-purple  { --glow-color: #AC89FF; }
+.category-box.glow-orange  { --glow-color: #FF9F43; }
+
+.link-to__page {
+  pointer-events: none;
 }

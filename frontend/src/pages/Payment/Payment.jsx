@@ -1,4 +1,5 @@
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import "./Payment.css";
 
 import {faCcVisa, faCcMastercard, faCcAmex} from "@fortawesome/free-brands-svg-icons";
@@ -19,6 +20,7 @@ export default function Payment() {
     const [isProcessing, setIsProcessing] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState("monthly");
+    const navigate = useNavigate();
 
     const detectCardType = (number) => {
 
@@ -220,6 +222,32 @@ const handlePayment = () => {
     setTimeout(() =>{
         setIsProcessing(false);
         setIsSuccess(true);
+
+        // Marcar usuario como premium 
+        try {
+            const raw = localStorage.getItem("currentUser");
+            if (raw) {
+                const currentUser = JSON.parse(raw);
+                const updatedUser = { ...currentUser, premium: true };
+                localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+                // También actualizar en la lista "users" para que persista tras re-login
+                const users = JSON.parse(localStorage.getItem("users")) || [];
+                const updatedUsers = users.map(u =>
+                    u.email === currentUser.email ? { ...u, premium: true } : u
+                );
+                localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+                window.dispatchEvent(new Event('userUpdated'));
+            }
+        } catch (e) {
+            console.error("Error al actualizar premium:", e);
+        }
+
+        setTimeout(() => {
+            navigate("/profile");
+        }, 1500);
+        
     }, 2000);
         
     };

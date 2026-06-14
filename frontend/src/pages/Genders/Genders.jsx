@@ -53,7 +53,7 @@ const Genders = () => {
             >
               <img src={category.image} alt={category.title} />
               <div className="categorie-info flex">
-                <p className='p-number width'>01 / Genre</p>
+                <p className='p-number width'>01 / popularity</p>
                 <h4 className='h4-gener width'>{category.title}</h4>
               </div>
             </div>
@@ -69,7 +69,7 @@ const Genders = () => {
             >
               <img src={category.image} alt={category.title} />
               <div className="categorie-info flex">
-                <p className='p-number width'>01 / Genre</p>
+                <p className='p-number width'>02 / Popularity</p>
                 <h4 className='h4-gener width'>{category.title}</h4>
               </div>
             </div>
@@ -85,7 +85,7 @@ const Genders = () => {
             >
               <img src={category.image} alt={category.title} />
               <div className="categorie-info flex">
-                <p className='p-number width'>01 / Genre</p>
+                <p className='p-number width'>03 / Popularity</p>
                 <h4 className='h4-gener width'>{category.title}</h4>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 import './Profile.css'
 import { games } from '../../assets/assets.js'
@@ -59,6 +60,33 @@ const GENRES = [
   { name: 'Indie',      svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF9F43" className="bi bi-dice-6" viewBox="0 0 16 16"> <path d="M13 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zM3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3z"/> <path d="M5.5 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m8 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-8 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/></svg>, pct: 33, count: 16, color: '#FF9F43' },
 ]
 
+/* Criticas recientes*/ 
+const RECENT_REVIEWS = [
+  {
+    id: 1,
+    game: games[0],
+    score: 9.5,
+    comment: 'Una síntesis magistral de combate veloz y narrativa filosófica. La sensación cinética de la traversal es inigualable en los ARPG actuales. Cada frame está optimizado para pura adrenalina.',
+    date: 'PUBLICADO 24 OCT, 2024',
+  },
+  {
+    id: 2,
+    game: games[5],
+    score: 6.2,
+    comment: 'Visualmente impactante, pero el balance está completamente roto en el tercer acto. El bucle de gestión de recursos se vuelve una tarea más que un desafío. Espera un parche antes de jugarlo.',
+    date: 'PUBLICADO 12 OCT, 2024',
+  },
+]
+
+/* Juegos recomendados */
+const RECOMMENDED_GAMES = [
+  { id: 3, game: games[13], tag: 'BASADO EN TUS LIKES' },
+  { id: 4, game: games[19], tag: 'PODRÍA GUSTARTE' },
+  { id: 5, game: games[18], tag: 'PRUEBALO AHORA' },
+  { id: 6, game: games[17], tag: 'EXPLORA ALGO NUEVO' },
+]
+
+
 /* ─── GenreBar ───────────────────────────────────────────── */
 function GenreBar({ name, svg, pct, count, color, delay }) {
   const [animated, setAnimated] = useState(false)
@@ -102,6 +130,8 @@ const Profile = () => {
   const [avatarPhoto, setAvatarPhoto]   = useState(null)
   const carouselRef = useRef(null)
   const fileInputRef = useRef(null)
+  const navigate = useNavigate();
+  const [isPremium, setIsPremium] = useState(false)
 
   /* reveal on scroll */
   useEffect(() => {
@@ -176,9 +206,24 @@ const Profile = () => {
         setBio(u.bio || bio)
         setTempBio(u.bio || tempBio)
         setAvatarPhoto(avatarVal)
+        setIsPremium(Boolean(u.premium))
       }
     } catch (e) {}
   }, [])
+
+  useEffect(() => {
+  const onUserUpdated = () => {
+    try {
+      const raw = localStorage.getItem('currentUser')
+      if (raw) {
+        const u = JSON.parse(raw)
+        setIsPremium(Boolean(u.premium))
+      }
+    } catch (e) {}
+  }
+  window.addEventListener('userUpdated', onUserUpdated)
+  return () => window.removeEventListener('userUpdated', onUserUpdated)
+}, [])
 
   const persistUser = (patch) => {
     try {
@@ -322,11 +367,13 @@ const Profile = () => {
             ) : (
               <>
                 <h1 className="profile-name">{name}</h1>
-                <span className="verified-badge" title="Verificado">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#9CFF93" viewBox="0 0 16 16">
-                    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-                  </svg>
-                </span>
+                {isPremium && (
+                  <span className="verified-badge" title="Verificado">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#9CFF93" viewBox="0 0 16 16">
+                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                    </svg>
+                  </span>
+                )}
                 <button
                   className="icon-edit-btn"
                   onClick={() => { setIsEditingName(true); setTempName(name) }}
@@ -430,6 +477,59 @@ const Profile = () => {
           </div>
         </div>
 
+      </div>
+
+      {/* ── RECENT REVIEWS y RECOMMENDATIONS ── */}
+      <div className="recs-grid">
+
+        {/* LEFT — RECENT REVIEWS */}
+        <div className="recs-left">
+          <div className="recs-card p-reveal p-reveal-left">
+            <div className="card-header recs-header">
+              <h2 className="recs-title">Reseñas Recientes</h2>
+              <button className="see-all-btn">Ver todas las reseñas</button>
+            </div>
+
+            <div className="reviews-list">
+              {RECENT_REVIEWS.map(r => (
+                <div
+                  className="review-card"
+                  key={r.id}
+                  onClick={() => navigate(`/game/${r.game.id}`)}
+                >
+                  <img src={r.game.image} alt={r.game.title} className="review-card__img" />
+                  <div className="review-card__body">
+                    <h3 className="review-card__title">{r.game.title}</h3>
+                    <span className="review-card__score" style={{ color: r.score >= 7 ? '#9CFF93' : '#FF6B6B' }}>
+                      Score: {r.score}/10
+                    </span>
+                    <p className="review-card__comment">{r.comment}</p>
+                    <span className="review-card__date">{r.date}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT — RECOMMENDATIONS */}
+        <div className="recs-right">
+          <h2 className="recs-title recs-title--right p-reveal p-reveal-right">Recomendaciones</h2>
+
+          {RECOMMENDED_GAMES.map(rec => (
+            <div
+              className="rec-game-card p-reveal p-reveal-right"
+              key={rec.id}
+              onClick={() => navigate(`/game/${rec.game.id}`)}
+            >
+              <img src={rec.game.image} alt={rec.game.title} className="rec-game-card__img" />
+              <div className="rec-game-card__overlay">
+                <span className="rec-game-card__tag">{rec.tag}</span>
+                <h3 className="rec-game-card__title">{rec.game.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* ── ELITE RATINGS CAROUSEL (exact Home replica) ── */}

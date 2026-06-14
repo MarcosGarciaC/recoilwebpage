@@ -30,7 +30,8 @@ export const games = [
     price: "Free",
     platforms: ["PC"],
     image: "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/valo2.png",
-    description: "Shooter táctico 5v5 donde la precisión y las habilidades de agentes definen cada partida."
+    description: "Shooter táctico 5v5 donde la precisión y las habilidades de agentes definen cada partida.",
+    trailer: "https://youtu.be/IhhjcB2ZjIM?si=QV5MQTNJFXDFLukY"
   },
   {
     id: 2,
@@ -42,7 +43,8 @@ export const games = [
     price: "Free",
     platforms: ["PC"],
     image: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/CS2_Cover_Art.jpg/250px-CS2_Cover_Art.jpg",
-    description: "El clásico shooter competitivo evoluciona con nuevo motor y jugabilidad más precisa."
+    description: "El clásico shooter competitivo evoluciona con nuevo motor y jugabilidad más precisa.",
+    trailer: "https://youtu.be/c80dVYcL69E?si=OueykuZa_Nkx-Ipd"
   },
   {
     id: 3,
@@ -54,7 +56,8 @@ export const games = [
     price: "Free",
     platforms: ["PC"],
     image: "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/leagueoflegends.png",
-    description: "Juego estratégico por equipos donde cada campeón tiene habilidades únicas."
+    description: "Juego estratégico por equipos donde cada campeón tiene habilidades únicas.",
+    trailer: "https://youtu.be/-3aes7Vh8cc?si=ks6P8Ifx7V2jzK6m"
   },
   {
     id: 4,
@@ -66,7 +69,8 @@ export const games = [
     price: "Free",
     platforms: ["PC", "PS5", "Xbox", "Switch"],
     image: forniteFoto,
-    description: "Battle royale con construcción, eventos en vivo y constantes actualizaciones."
+    description: "Battle royale con construcción, eventos en vivo y constantes actualizaciones.",
+    trailer: "https://youtu.be/WJW-bzXZM8M?si=-i1ltXFSOprZvLAd"
   },
   {
     id: 5,
@@ -78,7 +82,8 @@ export const games = [
     price: "Free",
     platforms: ["PC", "PS5", "Xbox"],
     image: "https://upload.wikimedia.org/wikipedia/en/thumb/6/65/COD_Warzone_Cover_Art.jpg/250px-COD_Warzone_Cover_Art.jpg",
-    description: "Acción intensa en mapas masivos con mecánicas realistas y combate táctico."
+    description: "Acción intensa en mapas masivos con mecánicas realistas y combate táctico.",
+    trailer: "https://youtu.be/0E44DClsX5Q?si=fVDjzR_iW6-9Bmyc"
   },
   {
     id: 6,
@@ -90,7 +95,8 @@ export const games = [
     price: "$29.99",
     platforms: ["PC", "PS5", "Xbox"],
     image: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Grand_Theft_Auto_V.png/250px-Grand_Theft_Auto_V.png",
-    description: "Explora Los Santos en una experiencia de mundo abierto llena de acción y misiones."
+    description: "Explora Los Santos en una experiencia de mundo abierto llena de acción y misiones.",
+    trailer: "https://youtu.be/hvoD7ehZPcM?si=tnnTLvvsT1aI-VTt"
   },
   {
     id: 7,
@@ -102,7 +108,8 @@ export const games = [
     price: "$39.99",
     platforms: ["PC", "PS5", "Xbox", "Switch"],
     image: "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Witcher_3_cover_art.jpg/250px-Witcher_3_cover_art.jpg",
-    description: "RPG de fantasía con historia profunda y un mundo abierto lleno de decisiones."
+    description: "RPG de fantasía con historia profunda y un mundo abierto lleno de decisiones.",
+    trailer: "https://youtu.be/1-l29HlKkXU?si=ci3mOSWXqgfqJlkr"
   },
   {
     id: 8,
@@ -114,7 +121,8 @@ export const games = [
     price: "$26.95",
     platforms: ["PC", "PS5", "Xbox", "Switch", "Mobile"],
     image: MinecraftFoto,
-    description: "Construye, explora y sobrevive en un mundo infinito hecho de bloques."
+    description: "Construye, explora y sobrevive en un mundo infinito hecho de bloques.",
+    trailer: "https://youtu.be/MmB9b5njVbA?si=khgvNKxvjDp58ZS5"
   },
   {
     id: 9,
@@ -126,7 +134,8 @@ export const games = [
     price: "Free",
     platforms: ["PC", "PS5", "Xbox", "Switch"],
     image: ApexFoto,
-    description: "Battle royale dinámico con héroes y habilidades únicas."
+    description: "Battle royale dinámico con héroes y habilidades únicas.",
+    trailer: "https://youtu.be/UMJb_mkqynU?si=A5evq8Scmn27ieNO"
   },
   {
     id: 10,
@@ -138,7 +147,8 @@ export const games = [
     price: "Free",
     platforms: ["PC", "PS5", "Xbox", "Switch"],
     image: "https://m.media-amazon.com/images/M/MV5BYjY0ZjJiMDQtNTY0Yy00ODJlLWEzYmYtMGZkZjNjNzc1NzE5XkEyXkFqcGc@._V1_.jpg",
-    description: "Shooter por equipos basado en héroes con roles y habilidades cooperativas."
+    description: "Shooter por equipos basado en héroes con roles y habilidades cooperativas.",
+    trailer: "https://youtu.be/GKXS_YA9s7E?si=cezEiQUrFIsl-m_B"
   }, 
   {
     id: 11,
@@ -150,7 +160,8 @@ export const games = [
     price: "$59.99",
     platforms: ["PC", "PS5"],
     image: "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/The_Last_of_Us_Part_I_cover.jpg/250px-The_Last_of_Us_Part_I_cover.jpg",
-    description: "En un entorno posapocalíptico donde los infectados (humanos que se convierten en criaturas salvajes muy agresivas debido a un hongo mutado) deambulan por el mundo, Joel, un sobreviviente curtido, tiene la tarea de guiar a una adolescente llamada Ellie fuera de una zona de cuarentena militar. La misión se transforma en un viaje desgarrador a través de un Estados Unidos devastado, mientras Joel hace todo lo posible para mantener a Ellie con vida. "
+    description: "En un entorno posapocalíptico donde los infectados (humanos que se convierten en criaturas salvajes muy agresivas debido a un hongo mutado) deambulan por el mundo, Joel, un sobreviviente curtido, tiene la tarea de guiar a una adolescente llamada Ellie fuera de una zona de cuarentena militar. La misión se transforma en un viaje desgarrador a través de un Estados Unidos devastado, mientras Joel hace todo lo posible para mantener a Ellie con vida. ",
+    trailer: "https://youtu.be/W01L70IGBgE?si=DTKqfobTwIUO9JgD"
   },
   {
     id: 12,
@@ -162,7 +173,8 @@ export const games = [
     price: "$49.99",
     platforms: ["PS4", "PS5"],
     image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/TLOU_P2_Box_Art_2.png/250px-TLOU_P2_Box_Art_2.png",
-    description: "Secuela intensa con narrativa profunda y combate brutal."
+    description: "Secuela intensa con narrativa profunda y combate brutal.",
+    trailer: "https://youtu.be/JdE9U9WW_HM?si=9YIoTK-AVgICm6xi"
   },
   {
     id: 13,
@@ -174,7 +186,8 @@ export const games = [
     price: "$39.99",
     platforms: ["PS4", "PS5", "Xbox", "Switch"],
     image: "https://cdn.mobygames.com/covers/24123973-red-dead-redemption-playstation-4-front-cover.jpg",
-    description: "Aventura en el viejo oeste siguiendo la historia de John Marston."
+    description: "Aventura en el viejo oeste siguiendo la historia de John Marston.",
+    trailer: "https://youtu.be/-o7rES_3ymA?si=8rDVMVxeRRxCCcW5"
   },
   {
     id: 14,
@@ -186,7 +199,8 @@ export const games = [
     price: "$59.99",
     platforms: ["PC", "PS5", "Xbox"],
     image: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e5d6f175-3a2e-493d-b7f2-5f70852b4f2e/dermu4d-3d22a435-f639-4fc5-864d-0c78ac450eff.jpg/v1/fill/w_683,h_1171,q_70,strp/red_dead_redemption_2_game_cover_by_love_myart_dermu4d-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjE5NSIsInBhdGgiOiIvZi9lNWQ2ZjE3NS0zYTJlLTQ5M2QtYjdmMi01ZjcwODUyYjRmMmUvZGVybXU0ZC0zZDIyYTQzNS1mNjM5LTRmYzUtODY0ZC0wYzc4YWM0NTBlZmYuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.IEFmIALxJhUthrr1pwdMdWUp-5Z-Hsc_XILLQcoBa8I",
-    description: "Mundo abierto detallado ambientado en el salvaje oeste."
+    description: "Mundo abierto detallado ambientado en el salvaje oeste.",
+    trailer: "https://youtu.be/MyaYlbizpvs?si=MAUlHnPu_vmhW640"
   },
   {
     id: 15,
@@ -198,7 +212,8 @@ export const games = [
     price: "$39.99",
     platforms: ["PC", "PS4", "PS5"],
     image: "https://savekeys.net/wp-content/uploads/2022/01/god-of-war-pc-game-steam-cover.jpg",
-    description: "Kratos emprende una nueva aventura en la mitología nórdica."
+    description: "Kratos emprende una nueva aventura en la mitología nórdica.",
+    trailer: "https://youtu.be/AN3jEjjcZ-k?si=FE_gmiAwdegI9Uw-"
   },
   {
     id: 16,
@@ -210,7 +225,8 @@ export const games = [
     price: "$69.99",
     platforms: ["PS5", "PS4"],
     image: "https://thumb.pccomponentes.com/w-530-530/articles/1047/10472219/6739-god-of-war-ragnarok-ps4-18f02c85-30f1-4eb0-9ba5-bdcca0894bbf.jpg",
-    description: "Continúa la épica historia de Kratos y Atreus."
+    description: "Continúa la épica historia de Kratos y Atreus.",
+    trailer: "https://youtu.be/hfJ4Km46A-0?si=NLE5lxdwR6jQK4mk"
   },
   {
     id: 17,
@@ -222,7 +238,8 @@ export const games = [
     price: "$49.99",
     platforms: ["PC", "PS5", "Xbox"],
     image: "https://4kwallpapers.com/images/wallpapers/cyberpunk-2077-768x1024-20154.jpg",
-    description: "Explora Night City en un RPG futurista lleno de acción."
+    description: "Explora Night City en un RPG futurista lleno de acción.",
+    trailer: "https://youtu.be/qIcTM8WXFjk?si=PGpB7Z-JAI3Q4gJf"
   },
   {
     id: 18,
@@ -234,7 +251,8 @@ export const games = [
     price: "$59.99",
     platforms: ["PC", "PS5", "Xbox"],
     image: "https://i.ebayimg.com/images/g/9owAAOSww4RiKBzU/s-l1200.jpg",
-    description: "Aventura desafiante en un mundo abierto oscuro."
+    description: "Aventura desafiante en un mundo abierto oscuro.",
+    trailer: "https://youtu.be/E3Huy2cdih0?si=CQ_qvjWvxIPKkl7w"
   },
   {
     id: 19,
@@ -246,7 +264,8 @@ export const games = [
     price: "$39.99",
     platforms: ["PC", "PS4", "PS5"],
     image: "https://images.squarespace-cdn.com/content/v1/6438bb3e94582e0e6d7b5c60/1681444442057-BDSP3NSQ65OO9DIA27SJ/cfp1c3QENHakdjuf424Yt6hVn_mmFbOV-M8rITUoVj8_350x200_3x-0.jpeg",
-    description: "Caza máquinas en un mundo postapocalíptico futurista."
+    description: "Caza máquinas en un mundo postapocalíptico futurista.",
+    trailer: "https://youtu.be/u4-FCsiF5x4?si=iJo1uMKTEtoQutM8"
   },
   {
     id: 20,
@@ -258,7 +277,8 @@ export const games = [
     price: "$49.99",
     platforms: ["PC", "PS5"],
     image: SpidermanRemasteredFoto,
-    description: "Balancea por Nueva York en una aventura de superhéroes."
+    description: "Balancea por Nueva York en una aventura de superhéroes.",
+    trailer: "https://youtu.be/1E051WtpyWg?si=7olDkZdLwIlmxpA6"
   }
 ]
 

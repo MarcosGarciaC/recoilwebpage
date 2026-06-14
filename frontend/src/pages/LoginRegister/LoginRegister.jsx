@@ -38,7 +38,8 @@ function LoginRegister() {
     const newUser = {
         name: registerName,
         email: registerEmail,
-        password: registerPassword
+        password: registerPassword,
+        premium: false
     };
 
     users.push(newUser);

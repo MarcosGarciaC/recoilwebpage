@@ -59,7 +59,7 @@ const News = () => {
 
                     <button
                       className='news-btn-gameplay'
-                      onClick={() => window.open(item.trailer_link, "_blank")}
+                      onClick={() => window.open("https://youtu.be/DxMqnlM4SVY?si=Wkky3XdeYjsnKyG8", "_blank", "noopener,noreferrer")}
                     >
                       Watch Trailer
                     </button>
