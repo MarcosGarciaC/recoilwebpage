@@ -17,8 +17,13 @@ const UserMenu = ({ currentUser }) => {
 
     const handleSettings = () => {
         navigate("/settings");
-    };
 
+    };
+    
+    const handlePaymentMethods = () => {
+        navigate("/paymentmethods")
+        }
+        
   return (
     <div className="user-menu">
         <div className="user-menu-header">
@@ -40,7 +45,7 @@ const UserMenu = ({ currentUser }) => {
             Perfil
         </button>
 
-        <button className="menu-item">
+        <button className="menu-item" onClick={handlePaymentMethods}>
             <i className="fa-solid fa-credit-card"></i>
             Métodos de pago
         </button>

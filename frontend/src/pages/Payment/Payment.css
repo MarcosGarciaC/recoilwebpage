@@ -837,6 +837,11 @@ body,
     margin: 25px auto 35px;
 }
 
+/*
+=====================================
+RESUMEN DE PAGO (DESHABILITADO)
+Se eliminó porque generaba scroll innecesario.
+=====================================
 .payment-summary{
     padding: 16px 18px;
 
@@ -912,6 +917,7 @@ body,
 
     font-weight: 500;
 }
+    */
 
 .security-note{
     text-align: center;
@@ -923,4 +929,154 @@ body,
     font-size: 13px;
 
     line-height: .5;
+}
+
+.payment-success-page{
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.payment-success-card{
+    text-align: center;
+
+    max-width: 500px;
+
+    padding: 50px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    animation: fadeIn .5s ease;
+}
+
+.premium-medal{
+    width: 110px;
+    height: 110px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 52px;
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff2b0 0%,
+            #ffd86b 20%,
+            #cfa436 40%,
+            #fff0a8 60%,
+            #b98b21 80%,
+            #ffe48a 100%
+        );
+
+    background-size: 300% 300%;
+
+    animation:
+        goldShine 4s linear infinite;
+
+    box-shadow:
+        0 0 40px rgba(255,215,0,.25),
+        inset 0 2px 8px rgba(255,255,255,.5);
+}
+
+.success-badge{
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    padding: 8px 18px;
+
+    border-radius: 999px;
+
+    background: rgba(255,215,0,.12);
+
+    border: 1px solid rgba(255,215,0,.25);
+
+    color: #ffd86b;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+@keyframes goldShine{
+    0%{
+        background-position: 0% 50%;
+    }
+
+    100%{
+        background-position: 100% 50%;
+    }
+}
+
+.payment-success-card h1{
+    margin-bottom: 15px;
+
+    font-size: 34px;
+}
+
+.payment-success-card p{
+    color: #bdbdbd;
+
+    margin-bottom: 15px;
+}
+
+.payment-success-card small{
+    color: #8f8f8f;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.save-card-option{
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.save-card-option label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #bdbdbd;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.save-card-option input{
+    width: 18px;
+    height: 18px;
+
+    accent-color: #00ff41;
+
+    cursor: pointer;
 }

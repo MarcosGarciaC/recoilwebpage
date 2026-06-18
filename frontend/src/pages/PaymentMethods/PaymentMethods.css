@@ -1,0 +1,296 @@
+.payment-methods-page{
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    padding: 80px 20px;
+}
+
+.payment-methods-container{
+    width: 100%;
+    max-width: 1000px;
+}
+
+.payment-methods-container h1{
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.payment-methods-subtitle{
+    color: #bdbdbd;
+    margin-bottom: 40px;
+}
+
+.empty-payment-state{
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 24px;
+    padding: 50px;
+    text-align: center;
+}
+
+.empty-payment-state h3{
+    margin-bottom: 10px;
+}
+
+.empty-payment-state p{
+color: #bdbdbd;
+margin-bottom: 25px;
+}
+
+.add-payment-btn{
+    padding: 14px 28px;
+    border: none;
+    border-radius: 14px;
+    background: #00ff41;
+    color: #0a0a0a;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.payment-form-card{
+    margin-top: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.payment-form-card input{
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: rgba(255,255,255,.03);
+
+    color: white;
+}
+
+.payment-form-row{
+    display: flex;
+
+    gap: 15px;
+}
+
+.payment-form-row input:first-child{
+    flex: 2;
+}
+
+.payment-form-row input:last-child{
+    flex: 2;
+}
+
+.save-card-btn{
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #00ff41;
+
+    color: #0a0a0a;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.saved-cards{
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.saved-card{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.06),
+            rgba(255,255,255,.02)
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.saved-card:hover{
+    transform: translateY(-2px);
+
+    border-color: rgba(0,255,65,.2);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.25);
+}
+
+.saved-card-header{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.saved-card-header h3{
+    color: #00ff41;
+
+    margin: 0;
+}
+
+.saved-card-header span{
+    color: #bdbdbd;
+}
+
+.saved-card-info p{
+    margin: 0 0 8px 0;
+
+    font-weight: 600;
+}
+
+.saved-card-info small{
+    color: #9f9f9f;
+}
+
+.saved-card-actions{
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.saved-card-actions button{
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.delete-btn{
+    background: rgba(255,0,0,.15);
+
+    color: #ff5a5a;
+}
+
+.payment-methods-header{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 40px;
+}
+
+.add-card-header-btn{
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #00ff41;
+
+    color: #0a0a0a;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.payment-form-actions{
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+.payment-form-actions button{
+    flex: 1;
+}
+
+
+.cancel-edit-btn{
+    padding: 14px 20px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.04);
+
+    color: #bdbdbd;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.cancel-edit-btn:hover{
+    background: rgba(255,255,255,.08);
+
+    color: white;
+}
+
+.default-card-badge{
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: rgba(255,215,0,.08);
+
+    border: 1px solid rgba(255,215,0,.18);
+
+    color: #ffd700;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.primary-btn{
+    background: rgba(255,215,0,.12);
+
+    color: #ffd700;
+
+    border: 1px solid rgba(255,215,0,.25);
+}
+
+.default-card-container{
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 24px;
+
+    margin-bottom: 12px;
+}

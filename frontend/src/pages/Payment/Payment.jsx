@@ -21,6 +21,7 @@ export default function Payment() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState("monthly");
     const navigate = useNavigate();
+    const [saveCard, setSaveCard] = useState(true);
 
     const detectCardType = (number) => {
 
@@ -238,6 +239,35 @@ const handlePayment = () => {
                 );
                 localStorage.setItem("users", JSON.stringify(updatedUsers));
 
+                if (saveCard){
+                const savedCards =
+                JSON.parse(
+                    localStorage.getItem("paymentMethods")
+                ) || [];
+
+                const cardAlreadyExists = savedCards.some(
+                    card =>
+                        card.lastDigits === cardNumber.slice(-4) &&
+                    card.holder === cardName
+                );
+                if (!cardAlreadyExists) {
+                    const newCard = {
+                        id: Date.now(),
+                        type: cardType || "visa",
+                        holder: cardName,
+                        lastDigits: cardNumber.slice(-4),
+                        expiry: expiryDate
+                    };
+                    localStorage.setItem(
+                        "paymentMethods",
+                        JSON.stringify([
+                            ...savedCards,
+                            newCard
+                        ])
+                    );
+                }
+            }
+
                 window.dispatchEvent(new Event('userUpdated'));
             }
         } catch (e) {
@@ -246,11 +276,35 @@ const handlePayment = () => {
 
         setTimeout(() => {
             navigate("/profile");
-        }, 1500);
+        }, 5000);
         
     }, 2000);
         
     };
+
+    if (isSuccess) {
+        return (
+            <main className="payment-success-page">
+                <div className="payment-succes-card">
+                    <div className="premium-medal">
+                        ★
+                        </div>
+                        <span className="success-badge">
+                            MEMBRESÍA ACTIVADA
+                            </span>
+                    <h1>
+                        ¡Bienvenido a Recoil Premium!
+                    </h1>
+                    <p>
+                        Ya puedes disfrutar de todos los beneficios.
+                    </p>
+                    <small>
+                        Redirigiendo a tu perfil...
+                    </small>
+                </div>
+            </main>
+        );
+    }
 
     const isExpired =
     expiryDate.length === 5 &&
@@ -523,7 +577,7 @@ const handlePayment = () => {
                     />
                     </div>
 
-                        <div className="payment-summary">
+                        {/*<div className="payment-summary">
 
     {selectedPlan === "monthly" ? (
 
@@ -559,10 +613,21 @@ const handlePayment = () => {
             </div>
         </>
 
-    )}
 
 </div>
-                    <button
+    )} */}
+<div className="save-card-option">
+    <label>
+        <input type="checkbox"
+        checked={saveCard}
+        onChange={(e) =>
+            setSaveCard(e.target.checked)
+        } 
+        />
+        Guardar esta tarjeta para compras futuras
+    </label>
+</div>
+    <button
     type="button"
     disabled={!canPay || isProcessing || isSuccess}
     onClick={handlePayment}
