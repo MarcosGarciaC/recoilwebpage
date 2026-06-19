@@ -96,7 +96,6 @@ const Navbar = () => {
                 Hola, {currentUser.name}
               </span>
               <span className={`greeting greeting-name ${showGreeting ? "hide" : "show"}`}>
-                {currentUser.name}
               </span>
             </div>
 
