@@ -23,7 +23,7 @@ import Subscription from './pages/Subscription/Subscription'
 function App() {
    const location = useLocation();
    const isAuthPage = location.pathname ==="/login" || location.pathname === "/register" ||
-   location.pathname === "/payment" || location.pathname === "/paymentmethods";
+   location.pathname === "/payment" || location.pathname === "/paymentmethods" || location.pathname === "/chochita" ;
 
    return (
       <section>
@@ -40,7 +40,7 @@ function App() {
             <Route path="/register" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/Chochita" element={<EasterEgg />} />
+            <Route path="/chochita" element={<EasterEgg />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/paymentmethods" element={<PaymentMethods />} />
             <Route path="/Subscription" element={<Subscription />}  />
