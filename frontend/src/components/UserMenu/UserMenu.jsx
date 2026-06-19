@@ -24,6 +24,10 @@ const UserMenu = ({ currentUser }) => {
         navigate("/paymentmethods")
         }
         
+    const handleSubscription = () => {
+    navigate("/subscription");
+    };
+
   return (
     <div className="user-menu">
         <div className="user-menu-header">
@@ -45,15 +49,21 @@ const UserMenu = ({ currentUser }) => {
             Perfil
         </button>
 
+        <button className="menu-item" onClick={handleSettings}>
+            <i className="fa-solid fa-gear"></i>
+            Ajustes
+        </button>
+
         <button className="menu-item" onClick={handlePaymentMethods}>
             <i className="fa-solid fa-credit-card"></i>
             Métodos de pago
         </button>
 
-        <button className="menu-item" onClick={handleSettings}>
-            <i className="fa-solid fa-gear"></i>
-            Ajustes
+        <button className="menu-item" onClick={handleSubscription}>
+            <i className="fa-solid fa-crown"></i>
+            Suscripción
         </button>
+
         <hr />
         <button className="menu-item logout-btn" onClick={handleLogout}>
             <i className="fa-solid fa-right-from-bracket"></i>

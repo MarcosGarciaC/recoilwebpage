@@ -18,6 +18,7 @@ import Settings from './pages/Settings/Settings';
 import EasterEgg from './pages/EasterEgg/EasterEgg';
 import Payment from './pages/Payment/Payment';
 import PaymentMethods from './pages/PaymentMethods/PaymentMethods'
+import Subscription from './pages/Subscription/Subscription'
 
 function App() {
    const location = useLocation();
@@ -42,6 +43,7 @@ function App() {
             <Route path="/Chochita" element={<EasterEgg />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/paymentmethods" element={<PaymentMethods />} />
+            <Route path="/Subscription" element={<Subscription />}  />
          </Routes>
          {!isAuthPage && <Footer />}
       </section>

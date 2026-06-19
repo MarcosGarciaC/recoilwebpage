@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import './Profile.css'
 import { games } from '../../assets/assets.js'
+import { user_badges, favorite_genres } from '../../assets/profileData.js'
 
 /* ─── Mock data ─────────────────────────────────────────── */
 const BADGES = [
@@ -132,6 +133,8 @@ const Profile = () => {
   const fileInputRef = useRef(null)
   const navigate = useNavigate();
   const [isPremium, setIsPremium] = useState(false)
+  const [showBadgesModal, setShowBadgesModal] = useState(false)
+  const [showGenresModal, setShowGenresModal] = useState(false)
 
   /* reveal on scroll */
   useEffect(() => {
@@ -434,7 +437,6 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* ── MAIN GRID: badges + genres ── */}
       <div className="profile-grid">
 
         {/* LEFT — BADGES */}
@@ -442,10 +444,10 @@ const Profile = () => {
           <div className="profile-card p-reveal p-reveal-left">
             <div className="card-header">
               <span className="card-label">Insignias</span>
-              <button className="see-all-btn">Ver todas</button>
+              <button className="see-all-btn" onClick={() => setShowBadgesModal(true)}> Ver todas </button>
             </div>
             <div className="badges-grid">
-              {BADGES.map(b => (
+              {BADGES.slice(0, 10).map(b => (
                 <div
                   key={b.id}
                   className="badge-item"
@@ -467,7 +469,7 @@ const Profile = () => {
           <div className="profile-card p-reveal p-reveal-right">
             <div className="card-header">
               <span className="card-label">Géneros Favoritos</span>
-              <button className="see-all-btn">Ver detalles</button>
+              <button className="see-all-btn" onClick={() => setShowGenresModal(true)}> Ver detalles </button>
             </div>
             <div className="genres-list">
               {GENRES.map((g, i) => (
@@ -552,7 +554,7 @@ const Profile = () => {
 
         <div className="game-cards__carousel" ref={carouselRef}>
           {games.slice(0, 7).map((game, index) => (
-            <div className="game-card" key={index}>
+            <div className="game-card" key={index}  onClick={() => navigate(`/game/${game.id}`)}>
               <div>
                 <div className="rating-overlay">
                   <p className="user-score__number">{game.rating}</p>
@@ -573,8 +575,123 @@ const Profile = () => {
         </div>
       </section>
 
+        {showBadgesModal && (
+          <div
+            className="profile-modal-overlay"
+            onClick={() => setShowBadgesModal(false)}
+          >
+            <div
+              className="profile-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="profile-modal-header">
+                <h2>Insignias obtenidas</h2>
+
+                <button
+                  onClick={() => setShowBadgesModal(false)}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="badges-details-list">
+                {user_badges.map((badge) => (
+                  <div
+                    key={badge.id}
+                    className={`badge-detail-card ${badge.rarity}`}
+                  >
+                    <div className="badge-detail-content">
+                      <h3>{badge.title}</h3>
+                      <p>{badge.description}</p>
+                    </div>
+
+                    <div className="badge-detail-icon">
+                      <i className={`bi ${badge.icon}`}></i>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showGenresModal && (
+  <div
+    className="profile-modal-overlay"
+    onClick={() => setShowGenresModal(false)}
+  >
+    <div
+      className="profile-modal"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="profile-modal-header">
+        <h2>Géneros Favoritos</h2>
+
+        <button
+          onClick={() => setShowGenresModal(false)}
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="genres-details-list">
+            {favorite_genres.map((genre) => (
+              <div
+                key={genre.id}
+                className="genre-detail-card"
+              >
+                <div className="genre-detail-header">
+                  <div className="genre-detail-icon">
+                    <i className={`bi ${genre.icon}`}></i>
+                  </div>
+
+                  <div>
+                    <h3>{genre.genre}</h3>
+                    <span>
+                      {genre.games} juegos reseñados
+                    </span>
+                  </div>
+                </div>
+
+                <div className="genre-progress">
+                  <div
+                    className="genre-progress-fill"
+                    style={{ width: `${genre.percentage}%` }}
+                  />
+                </div>
+
+                <div className="genre-footer">
+                  <span>{genre.percentage}% del total</span>
+                </div>
+
+                <div className="genre-games-preview">
+                  {games
+                    .filter(g =>
+                      g.genre
+                        .toLowerCase()
+                        .includes(
+                          genre.genre.toLowerCase()
+                        )
+                    )
+                    .slice(0,4)
+                    .map(game => (
+                      <img
+                        key={game.id}
+                        src={game.image}
+                        alt={game.title}
+                      />
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
+    </div>
+  </div>
+)}
+
     </section>
   )
 }
 
 export default Profile
+

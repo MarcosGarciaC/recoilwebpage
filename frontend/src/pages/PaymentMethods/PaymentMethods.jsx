@@ -227,10 +227,6 @@ function PaymentMethods() {
                                     </button>
                                 )
                                 }
-                                <button onClick={() => handleEditCard(card)}
-                                    >
-                                    Editar
-                                </button>
                                 <button className="delete-btn" onClick={() => 
                                     handleDeleteCard(card.id)}>
                                     Eliminar

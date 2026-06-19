@@ -14,16 +14,29 @@ function LoginRegister() {
   //Login
   const [loginEmail, setLoginEmail] = useState("");
   const[loginPassword, setLoginPassword] = useState("");
+  const [registerError, setRegisterError] = useState("");
+  const [registerSuccess, setRegisterSuccess] = useState("");
 
   useEffect(() => {
     setActive(location.pathname === "/register");
   }, [location.pathname]);
 
   const handleRegister = () => {
+    setRegisterError("");
+    setRegisterSuccess("");
+
     if (!registerName || !registerEmail || !registerPassword) {
-        alert("Completa todos los campos");
+        setRegisterError("Completa todos los campos");
         return;
     }
+
+    if (registerPassword.length < 8) {
+        setRegisterError(
+            "La contraseña debe tener al menos 8 caracteres"
+        );
+        return;
+    }
+
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
     const userExists = users.find(
@@ -31,7 +44,7 @@ function LoginRegister() {
     );
 
     if (userExists) {
-        alert("El correo ya fue registrado");
+        setRegisterError("El correo ya fue registrado");
         return;
     }
 
@@ -44,15 +57,23 @@ function LoginRegister() {
 
     users.push(newUser);
 
-    localStorage.setItem("users", JSON.stringify(users));
-    alert("Usuario registrado correctamente");
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    );
+
+    setRegisterSuccess(
+        "Usuario registrado correctamente"
+    );
 
     setRegisterName("");
     setRegisterEmail("");
     setRegisterPassword("");
 
-    navigate("/login");
-  };
+    setTimeout(() => {
+        navigate("/login");
+    }, 1500);
+};
 
   const handleLogin = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -107,6 +128,18 @@ function LoginRegister() {
             <input type="text" placeholder="Nombre" value={registerName} onChange={(e) => setRegisterName(e.target.value)}/>
             <input type="email" placeholder="Correo" value={registerEmail} onChange={(e) => setRegisterEmail(e.target.value)}/>
             <input type="password" placeholder="Contraseña" value={registerPassword} onChange={(e) => setRegisterPassword(e.target.value)}/>
+
+            {registerError && (
+                <p className="form-feedback form-feedback--error">
+                    {registerError}
+                </p>
+            )}
+
+            {registerSuccess && (
+                <p className="form-feedback form-feedback--success">
+                    {registerSuccess}
+                </p>
+            )}
 
             <button type="button" onClick={handleRegister}>
               Registrarse

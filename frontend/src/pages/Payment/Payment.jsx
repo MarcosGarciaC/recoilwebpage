@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import "./Payment.css";
 
@@ -22,6 +22,30 @@ export default function Payment() {
     const [selectedPlan, setSelectedPlan] = useState("monthly");
     const navigate = useNavigate();
     const [saveCard, setSaveCard] = useState(true);
+    const [showAlreadySubscribed, setShowAlreadySubscribed] = useState(false);
+    const [subscriptionData, setSubscriptionData] = useState(null);
+
+        useEffect(() => {
+    const raw = localStorage.getItem("currentUser");
+
+    if (!raw) return;
+
+    const currentUser = JSON.parse(raw);
+
+    if (currentUser.premium) {
+        setShowAlreadySubscribed(true);
+
+        const subscription = JSON.parse(
+            localStorage.getItem("subscription")
+        );
+
+        if (subscription) {
+            setSubscriptionData(subscription);
+        }
+    }
+}, []);
+
+    
 
     const detectCardType = (number) => {
 
@@ -228,9 +252,77 @@ const handlePayment = () => {
         try {
             const raw = localStorage.getItem("currentUser");
             if (raw) {
+                
                 const currentUser = JSON.parse(raw);
-                const updatedUser = { ...currentUser, premium: true };
-                localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+                // Crear suscripción
+                const subscription = {
+    id: Date.now(),
+    userId: currentUser.id,
+
+    plan: selectedPlan,
+    status: "active",
+
+    cardType: cardType || "visa",
+    cardLastDigits: cardNumber.replace(/\s/g, "").slice(-4),
+
+    holderName: cardName,
+
+    startDate: new Date().toISOString(),
+
+    price:
+        selectedPlan === "monthly"
+            ? 7
+            : 96,
+
+    billingCycle:
+        selectedPlan === "monthly"
+            ? "monthly"
+            : "yearly",
+
+    expiresAt:
+        selectedPlan === "monthly"
+            ? new Date(
+                new Date().setMonth(
+                    new Date().getMonth() + 1
+                )
+            ).toISOString()
+            : new Date(
+                new Date().setFullYear(
+                    new Date().getFullYear() + 1
+                )
+            ).toISOString(),
+
+    nextBillingDate:
+        selectedPlan === "monthly"
+            ? new Date(
+                new Date().setMonth(
+                    new Date().getMonth() + 1
+                )
+            ).toISOString()
+            : new Date(
+                new Date().setFullYear(
+                    new Date().getFullYear() + 1
+                )
+            ).toISOString()
+};
+
+                // Guardar suscripción
+                localStorage.setItem(
+                    "subscription",
+                    JSON.stringify(subscription)
+                );
+
+                // Actualizar usuario a premium
+                const updatedUser = {
+                    ...currentUser,
+                    premium: true
+                };
+
+                localStorage.setItem(
+                    "currentUser",
+                    JSON.stringify(updatedUser)
+                );
 
                 // También actualizar en la lista "users" para que persista tras re-login
                 const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -309,6 +401,7 @@ const handlePayment = () => {
     const isExpired =
     expiryDate.length === 5 &&
     !validateExpiryDate(expiryDate);
+
 
     return (
         <main className="payment-page">
@@ -497,6 +590,7 @@ const handlePayment = () => {
                     <div className="card-input-wrapper">
 
     <input
+        disabled={showAlreadySubscribed}
         type="text"
         placeholder="Número de tarjeta"
         value={cardNumber}
@@ -534,6 +628,7 @@ const handlePayment = () => {
 </div>
 
                     <input
+                        disabled={showAlreadySubscribed}
                         type="text"
                         placeholder="Nombre del titular"
                         value={cardName}
@@ -544,6 +639,7 @@ const handlePayment = () => {
     <div className="expiry-group">
 
         <input
+            disabled={showAlreadySubscribed}
             type="text"
             placeholder="MM/AA"
             value={expiryDate}
@@ -563,6 +659,7 @@ const handlePayment = () => {
     </div>
 
                     <input
+                        disabled={showAlreadySubscribed}
                         type="text"
                         placeholder="CVV"
                         maxLength={cardType === "amex" ? 4 : 3}
@@ -629,7 +726,7 @@ const handlePayment = () => {
 </div>
     <button
     type="button"
-    disabled={!canPay || isProcessing || isSuccess}
+    disabled={!canPay || isProcessing || isSuccess || showAlreadySubscribed}
     onClick={handlePayment}
     className={`
         payment-btn
@@ -661,9 +758,63 @@ const handlePayment = () => {
                 </form>
                     </div>
                 </div>
-
-                
             </div>
+
+
+            {showAlreadySubscribed && (
+    <div className="subscription-modal-overlay">
+
+        <div className="subscription-modal">
+
+            <div className="subscription-modal-icon">
+                ★
+            </div>
+
+            <span className="subscription-badge">
+                PREMIUM ACTIVO
+            </span>
+
+            <h2>
+                Ya tienes una suscripción activa
+            </h2>
+
+            <p>
+                Detectamos que tu cuenta ya dispone de
+                una membresía RECOIL Premium activa.
+            </p>
+
+            <p className="subscription-small">
+                No es posible adquirir otra suscripción
+                mientras tu plan actual permanezca vigente.
+            </p>
+
+            <div className="subscription-actions">
+
+                <button
+                    className="subscription-btn secondary"
+                    onClick={() =>
+                        navigate("/profile")
+                    }
+                >
+                    Entendido
+                </button>
+
+                <button
+                    className="subscription-btn primary"
+                    onClick={() =>
+                        navigate("/subscription")
+                    }
+                >
+                    Ver mi suscripción
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+)}
         </main>
     );
+
 }
