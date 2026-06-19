@@ -1,419 +1,314 @@
+/* ══════════════════════════════════════════
+   SUBSCRIPTION PAGE — CON SUSCRIPCIÓN
+══════════════════════════════════════════ */
 .subscription-page{
-    max-width: 1200px;
-
-    margin: 0 auto;
-
-    padding:
-        120px 20px 60px;
-    min-height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 120px 20px 60px;
+    box-sizing: border-box;
+    min-height: 100vh;
 }
 
 .subscription-container{
-    width:100%;
-    max-width:900px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .subscription-header{
-    text-align:center;
-
-    margin-bottom:35px;
+    text-align: center;
+    margin-bottom: 35px;
 }
 
 .subscription-status{
-    display:inline-block;
-
-    padding:8px 18px;
-
-    border-radius:999px;
-
-    background:rgba(255,215,0,.12);
-
-    border:1px solid rgba(255,215,0,.25);
-
-    color:#ffd86b;
-
-    font-size:12px;
-    font-weight:700;
-
-    letter-spacing:2px;
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(255,215,0,.12);
+    border: 1px solid rgba(255,215,0,.25);
+    color: #ffd86b;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 .subscription-header h1{
-    margin-top:20px;
-    margin-bottom:10px;
-
-    font-size:42px;
-    font-weight:800;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 42px;
+    font-weight: 800;
 }
 
 .subscription-header p{
-    color:#a8a8a8;
+    color: #a8a8a8;
 }
 
 .premium-medal{
-    width:100px;
-    height:100px;
-
-    margin:0 auto 20px;
-
-    border-radius:50%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:48px;
-    font-weight:700;
-
-    color:#1a1a1a;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff2b0,
-            #ffd86b,
-            #cfa436,
-            #fff0a8,
-            #b98b21,
-            #ffe48a
-        );
-
-    background-size:300% 300%;
-
-    animation:goldShine 4s linear infinite;
-
-    box-shadow:
-        0 0 40px rgba(255,215,0,.25);
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: 700;
+    color: #1a1a1a;
+    background: linear-gradient(
+        135deg,
+        #fff2b0,
+        #ffd86b,
+        #cfa436,
+        #fff0a8,
+        #b98b21,
+        #ffe48a
+    );
+    background-size: 300% 300%;
+    animation: goldShine 4s linear infinite;
+    box-shadow: 0 0 40px rgba(255,215,0,.25);
 }
 
+/* GRID SUPERIOR */
+.subscription-top-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+/* TARJETAS */
 .subscription-card,
 .benefits-card,
 .actions-card{
-    background:rgba(255,255,255,.03);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:24px;
-
-    padding:30px;
-
-    backdrop-filter:blur(10px);
-
-    margin-bottom:25px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 24px;
+    padding: 32px;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
 }
 
-.subscription-row{
-    display:flex;
-    justify-content:space-between;
-
-    padding:16px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.subscription-row:last-child{
-    border-bottom:none;
-}
-
-.subscription-row span{
-    color:#9f9f9f;
-}
-
-.subscription-row strong{
-    color:white;
-}
-
-.subscription-row .active{
-    color:#00ff41;
-}
-
+.subscription-card h2,
 .benefits-card h2,
 .actions-card h2{
-    margin-bottom:20px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 34px;
+    font-weight: 800;
 }
 
+/* FILAS INFO */
+.subscription-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    gap: 12px;
+}
+
+.subscription-row:last-child{ border-bottom: none; }
+
+.subscription-row span{ color: #9f9f9f; }
+.subscription-row strong{ color: white; text-align: right; }
+.subscription-row .active{ color: #00ff41; }
+
+/* BENEFICIOS */
 .benefit-item{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    padding:12px 0;
-
-    color:#d0d0d0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    font-size: 17px;
+    color: #d0d0d0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
 }
+.benefit-item:last-child{ border-bottom: none; }
+
+/* GESTIÓN */
+.actions-card{ width: 100%; }
 
 .subscription-warning{
-    padding:16px;
-
-    margin-bottom:20px;
-
-    border-radius:14px;
-
-    background:rgba(255,193,7,.08);
-
-    border:1px solid rgba(255,193,7,.18);
-
-    color:#ffd86b;
+    text-align: center;
+    padding: 16px;
+    margin-bottom: 25px;
+    border-radius: 14px;
+    background: rgba(255,193,7,.08);
+    border: 1px solid rgba(255,193,7,.18);
+    color: #ffd86b;
 }
 
+/* BOTONES */
 .subscription-actions{
-    display:flex;
-    gap:15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .subscription-actions button{
-    flex:1;
-
-    height:54px;
-
-    border:none;
-    border-radius:14px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s ease;
+    flex: 1;
+    max-width: 300px;
+    height: 58px;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
 }
 
 .secondary-btn{
-    background:rgba(255,255,255,.08);
-    color:white;
+    background: rgba(255,255,255,.08);
+    color: white;
 }
 
 .secondary-btn:hover:not(:disabled){
-    transform:translateY(-2px);
-
-    background:rgba(255,255,255,.12);
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.12);
 }
 
 .danger-btn{
-    background:#ff4040;
-    color:white;
+    background: #ff4040;
+    color: white;
 }
 
 .danger-btn:hover:not(:disabled){
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 0 20px rgba(255,64,64,.25);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255,64,64,.25);
 }
 
 .subscription-actions button:disabled{
-    opacity:.5;
-
-    cursor:not-allowed;
-
-    transform:none;
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
 }
 
-/* =====================================
+/* ══════════════════════════════════════════
    SIN SUSCRIPCIÓN
-===================================== */
-
+══════════════════════════════════════════ */
 .no-subscription-card{
     width: 100%;
     max-width: 620px;
-
     margin: 40px auto;
-
     padding: 45px 40px;
-
     border-radius: 28px;
-
     position: relative;
     overflow: hidden;
-
     text-align: center;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(20,20,20,.92),
-            rgba(5,5,5,.96)
-        );
-
+    background: linear-gradient(
+        180deg,
+        rgba(20,20,20,.92),
+        rgba(5,5,5,.96)
+    );
     backdrop-filter: blur(12px);
-
     border: 1px solid rgba(255,215,0,.08);
-
-    box-shadow:
-        0 20px 80px rgba(0,0,0,.45);
+    box-shadow: 0 20px 80px rgba(0,0,0,.45);
+    box-sizing: border-box;
 }
-
-/* Glow dorado */
 
 .no-subscription-card::before{
     content: "";
-
     position: absolute;
-
     top: -140px;
     left: 50%;
-
     transform: translateX(-50%);
-
     width: 320px;
     height: 320px;
-
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,215,0,.18),
-            transparent 70%
-        );
-
+    background: radial-gradient(circle, rgba(255,215,0,.18), transparent 70%);
     pointer-events: none;
 }
-
-/* Moneda Premium */
 
 .no-subscription-icon{
     width: 95px;
     height: 95px;
-
     margin: 0 auto 22px;
-
     border-radius: 50%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-size: 42px;
-
     color: #1a1a1a;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff2b0 0%,
-            #ffd86b 20%,
-            #cfa436 40%,
-            #fff0a8 60%,
-            #b98b21 80%,
-            #ffe48a 100%
-        );
-
+    background: linear-gradient(
+        135deg,
+        #fff2b0 0%,
+        #ffd86b 20%,
+        #cfa436 40%,
+        #fff0a8 60%,
+        #b98b21 80%,
+        #ffe48a 100%
+    );
     background-size: 300% 300%;
-
     animation: goldShine 5s linear infinite;
-
     box-shadow:
         0 0 40px rgba(255,215,0,.25),
         inset 0 2px 8px rgba(255,255,255,.4);
 }
 
-/* Badge */
-
 .no-subscription-badge{
     display: inline-block;
-
     padding: 8px 18px;
-
     border-radius: 999px;
-
     margin-bottom: 20px;
-
     background: rgba(255,215,0,.08);
-
     border: 1px solid rgba(255,215,0,.18);
-
     color: #ffd86b;
-
     font-size: 12px;
     font-weight: 700;
-
     letter-spacing: 2px;
 }
 
-/* Título */
-
 .no-subscription-card h2{
     margin-bottom: 15px;
-
     color: white;
-
     font-size: 34px;
     font-weight: 800;
-
     line-height: 1.15;
-
     text-transform: uppercase;
 }
 
-/* Texto */
-
 .no-subscription-card p{
     max-width: 420px;
-
     margin: 0 auto 30px;
-
     color: #b8b8b8;
-
     line-height: 1.7;
-
     font-size: 16px;
 }
-
-/* Botón Premium */
 
 .no-subscription-btn{
     width: 100%;
     height: 58px;
-
     border: none;
     border-radius: 14px;
-
     background: #00ff41;
-
     color: #000;
-
     font-size: 16px;
     font-weight: 800;
-
     cursor: pointer;
-
     transition: all .25s ease;
 }
 
 .no-subscription-btn:hover{
     transform: translateY(-3px);
-
-    box-shadow:
-        0 0 30px rgba(0,255,65,.35);
+    box-shadow: 0 0 30px rgba(0,255,65,.35);
 }
-
-/* =====================================
-   BENEFICIOS
-===================================== */
 
 .subscription-benefits{
     margin-top: 35px;
-
     padding-top: 30px;
-
     border-top: 1px solid rgba(255,255,255,.08);
 }
 
 .subscription-benefits h3{
     margin-bottom: 20px;
-
     color: white;
-
     font-size: 26px;
     font-weight: 700;
 }
 
 .subscription-benefits ul{
     list-style: none;
-
     padding: 0;
     margin: 0;
-
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -421,192 +316,200 @@
 
 .subscription-benefits li{
     color: #cfcfcf;
-
     font-size: 17px;
 }
 
-/* =====================================
-   BOTONES SECUNDARIOS
-===================================== */
-
 .subscription-links{
     display: flex;
-
     gap: 12px;
-
     margin-top: 30px;
 }
 
 .subscription-nav-btn{
     flex: 1;
-
     height: 54px;
-
     border-radius: 12px;
-
     border: 1px solid rgba(255,255,255,.10);
-
     background: rgba(255,255,255,.04);
-
     color: #d0d0d0;
-
     font-weight: 600;
-
     cursor: pointer;
-
     transition: all .25s ease;
 }
 
 .subscription-nav-btn:hover{
     background: rgba(255,255,255,.08);
-
     border-color: rgba(255,255,255,.18);
-
     color: white;
-
     transform: translateY(-2px);
 }
 
 @keyframes goldShine{
-    0%{
-        background-position: 0% 50%;
+    0%  { background-position: 0%   50%; }
+    100%{ background-position: 100% 50%; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 900px)
+══════════════════════════════════════════ */
+@media (max-width: 900px){
+    .subscription-page{
+        padding: 80px 16px 48px;
     }
 
-    100%{
-        background-position: 100% 50%;
+    .subscription-header h1{
+        font-size: 32px;
     }
-}
 
-.subscription-page{
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-
-    padding: 120px 20px 60px;
-}
-
-.subscription-container{
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* GRID SUPERIOR */
-
-.subscription-top-grid{
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 25px;
-
-    margin-bottom: 25px;
-}
-
-/* TARJETAS */
-
-.subscription-card,
-.benefits-card,
-.actions-card{
-    background: rgba(255,255,255,.03);
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 24px;
-
-    padding: 32px;
-
-    backdrop-filter: blur(10px);
-}
-
-/* TITULOS */
-
-.subscription-card h2,
-.benefits-card h2,
-.actions-card h2{
-    text-align: center;
-
-    margin-bottom: 30px;
-
-    font-size: 34px;
-
-    font-weight: 800;
-}
-
-/* FILAS INFO */
-
-.subscription-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:18px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.subscription-row:last-child{
-    border-bottom:none;
-}
-
-/* BENEFICIOS */
-
-.benefit-item{
-    display:flex;
-    align-items:center;
-
-    gap:12px;
-
-    padding:16px 0;
-
-    font-size:17px;
-}
-
-/* GESTION */
-
-.actions-card{
-    width:100%;
-}
-
-.subscription-warning{
-    text-align:center;
-
-    margin-bottom:25px;
-}
-
-/* BOTONES */
-
-.subscription-actions{
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-}
-
-.subscription-actions button{
-    flex:1;
-
-    max-width:300px;
-
-    height:58px;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:900px){
-
+    /* Grid a una columna */
     .subscription-top-grid{
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
     }
 
+    /* Botones en columna */
     .subscription-actions{
-        flex-direction:column;
-        align-items:center;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .subscription-actions button{
-        width:100%;
-        max-width:none;
+        max-width: none;
+        width: 100%;
+    }
+
+    /* Tarjeta sin suscripción */
+    .no-subscription-card{
+        padding: 36px 28px;
+        margin: 24px auto;
+    }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MÓVIL (≤ 560px)
+══════════════════════════════════════════ */
+@media (max-width: 560px){
+    .subscription-page{
+        padding: 60px 12px 40px;
+    }
+
+    .premium-medal{
+        width: 78px;
+        height: 78px;
+        font-size: 36px;
+    }
+
+    .subscription-header h1{
+        font-size: 24px;
+    }
+
+    .subscription-header p{
+        font-size: 14px;
+    }
+
+    .subscription-card,
+    .benefits-card,
+    .actions-card{
+        padding: 22px 16px;
+        border-radius: 18px;
+    }
+
+    .subscription-card h2,
+    .benefits-card h2,
+    .actions-card h2{
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .subscription-row{
+        padding: 14px 0;
+        font-size: 14px;
+    }
+
+    .subscription-row strong{
+        font-size: 14px;
+    }
+
+    .benefit-item{
+        font-size: 14px;
+        padding: 12px 0;
+    }
+
+    .subscription-warning{
+        font-size: 13px;
+        padding: 14px;
+        margin-bottom: 18px;
+    }
+
+    .subscription-actions button{
+        height: 50px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    /* Sin suscripción */
+    .no-subscription-card{
+        padding: 28px 16px;
+        border-radius: 20px;
+        margin: 16px auto;
+    }
+
+    .no-subscription-icon{
+        width: 76px;
+        height: 76px;
+        font-size: 34px;
+    }
+
+    .no-subscription-card h2{
+        font-size: 24px;
+    }
+
+    .no-subscription-card p{
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .no-subscription-btn{
+        height: 52px;
+        font-size: 15px;
+    }
+
+    .subscription-benefits h3{
+        font-size: 20px;
+    }
+
+    .subscription-benefits li{
+        font-size: 15px;
+    }
+
+    .subscription-links{
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 24px;
+    }
+
+    .subscription-nav-btn{
+        height: 50px;
+        font-size: 14px;
+    }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MÓVIL MUY PEQUEÑO (≤ 380px)
+══════════════════════════════════════════ */
+@media (max-width: 380px){
+    .subscription-header h1{ font-size: 20px; }
+
+    .no-subscription-card h2{ font-size: 20px; }
+
+    .subscription-card,
+    .benefits-card,
+    .actions-card{ padding: 18px 12px; }
+
+    .premium-medal{
+        width: 64px;
+        height: 64px;
+        font-size: 28px;
     }
 }

@@ -36,8 +36,8 @@ const patchData = [
 
 const relatedNews = [
   { color: '#0d2a2a', tag: 'Competitivo', title: 'Temporada S2 2026: fechas y recompensas confirmadas', date: '2 Jun 2026' },
-  { color: '#1a1a0d', tag: 'Parche',      title: 'Hotfix 4.7.1: corrección de bugs críticos en Vortex',  date: '28 May 2026' },
-  { color: '#1a0d1a', tag: 'Evento',      title: 'Recoil Invitational: equipos clasificados y formato',  date: '20 May 2026' },
+  { color: '#1a1a0d', tag: 'Parche', title: 'Hotfix 4.7.1: corrección de bugs críticos en Vortex', date: '28 May 2026' },
+  { color: '#1a0d1a', tag: 'Evento', title: 'Recoil Invitational: equipos clasificados y formato', date: '20 May 2026' },
 ];
 
 function drawHero(canvas) {
@@ -226,27 +226,28 @@ export default function ArticleNews() {
             <h2>Cambios de balance: lo más importante</h2>
             <p>El parche toca a 14 agentes del roster actual. Aquí los más relevantes para el meta competitivo actual:</p>
 
-            <table className="patch-table">
-              <thead>
-                <tr>
-                  <th>Agente</th>
-                  <th>Cambio</th>
-                </tr>
-              </thead>
-              <tbody>
-                {patchData.map((row) => (
-                  <tr key={row.agent}>
-                    <td>{row.agent}</td>
-                    <td>
-                      <span className={`change-type change-${row.type}`}>{row.label}</span>
-                      <br />
-                      {row.desc}
-                    </td>
+            <div className="patch-table-wrap">
+              <table className="patch-table">
+                <thead>
+                  <tr>
+                    <th>Agente</th>
+                    <th>Cambio</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-
+                </thead>
+                <tbody>
+                  {patchData.map((row) => (
+                    <tr key={row.agent}>
+                      <td>{row.agent}</td>
+                      <td>
+                        <span className={`change-type change-${row.type}`}>{row.label}</span>
+                        <br />
+                        {row.desc}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <h2>Mejoras al sistema de clasificatorias</h2>
             <p>
               Más allá del balance, el parche introduce{' '}
@@ -378,7 +379,7 @@ export default function ArticleNews() {
           <div className="sidebar-card">
             <div className="sidebar-heading"><h3>TEMAS</h3></div>
             <div className="tags-list">
-              {['Parches','Balance','Ric9chet','Clasificatorias','NEXUS','QUASAR','PHANTOM','Meta','S2 2026'].map((t) => (
+              {['Parches', 'Balance', 'Ric9chet', 'Clasificatorias', 'NEXUS', 'QUASAR', 'PHANTOM', 'Meta', 'S2 2026'].map((t) => (
                 <button className="tag-pill" key={t}>{t}</button>
               ))}
             </div>

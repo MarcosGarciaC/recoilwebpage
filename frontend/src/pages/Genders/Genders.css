@@ -2,10 +2,14 @@
   background-color: #0E0E0E;
   padding-top: 140px;
   padding-left: 64px;
-  padding-right: 64px; 
+  padding-right: 64px;
+  padding-bottom: 64px;
   display: flex;
   flex-direction: column;
-  gap:64px;
+  gap: 64px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .title-box {
@@ -45,6 +49,8 @@ text-transform: uppercase;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 .green-color__text {
@@ -55,24 +61,29 @@ text-transform: uppercase;
   font-size: 72px;
   font-weight: bold;
   text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -2px;
 }
 
 .title-row__sumrecords {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .title-row__sumrecords p {
   color: #71717A;
   letter-spacing: 1px;
   font-size: 15px;
+  margin: 0;
 }
 
 .title-row__sumrecords h2 {
   letter-spacing: -1px;
   font-size: 46px;
   font-weight: bold;
+  margin: 0;
 }
 
 .categories-division {
@@ -81,6 +92,7 @@ text-transform: uppercase;
   align-items: center;
   justify-content: center;
   gap: 1em;
+  width: 100%;
 }
 
 .categories-bento {
@@ -88,7 +100,7 @@ text-transform: uppercase;
   width: 70%;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1em;
   grid-template-areas:
     "box-1 box-2 box-2"
@@ -100,7 +112,7 @@ text-transform: uppercase;
   width: 70%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: fr 1fr;
+  grid-template-rows: 1fr;
   gap: 1em;
   grid-template-areas:
     "box-4 box-5 box-6";
@@ -111,7 +123,7 @@ text-transform: uppercase;
   width: 70%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: fr 1fr;
+  grid-template-rows: 1fr;
   gap: 1em;
   grid-template-areas:
     "box-7 box-8";
@@ -126,4 +138,265 @@ text-transform: uppercase;
   transform: translateY(-10px);
 }
 
+.box {
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
 
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.categorie-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  color: white;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 8px;
+  box-sizing: border-box;
+  background: linear-gradient(to top, #0E0E0E, #0e0e0e00);
+}
+
+.width {
+  width: 100%;
+  max-width: 373.73px;
+  margin: 0;
+  padding: 0;
+}
+
+.p-number {
+  text-transform: uppercase;
+  color: #9CFF93;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.h4-gener {
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* Laptops pequeñas / tablets grandes */
+@media (max-width: 1200px) {
+  .genders {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 110px;
+    gap: 48px;
+  }
+
+  .categories-bento,
+  .categories-bento__middle,
+  .categories-bento__bottom {
+    width: 90%;
+  }
+
+  .title-row h1 {
+    font-size: 56px;
+  }
+
+  .title-row__sumrecords h2 {
+    font-size: 38px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .genders {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 100px;
+  }
+
+  .categories-bento,
+  .categories-bento__middle,
+  .categories-bento__bottom {
+    width: 100%;
+  }
+
+  .categories-bento {
+    height: 460px;
+  }
+
+  .categories-bento__middle,
+  .categories-bento__bottom {
+    height: 220px;
+  }
+
+  .title-row h1 {
+    font-size: 44px;
+  }
+
+  .title-row__sumrecords h2 {
+    font-size: 32px;
+  }
+
+  .h4-gener {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .categorie-info {
+    padding: 24px;
+  }
+}
+
+/* Mobile grande */
+@media (max-width: 768px) {
+  .genders {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 90px;
+    gap: 36px;
+  }
+
+  .title-box {
+    gap: 24px;
+    padding-bottom: 24px;
+  }
+
+  .title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .title-row h1 {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .title-row__sumrecords {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .title-row__sumrecords h2 {
+    font-size: 28px;
+  }
+
+  /* Bento grids: todo apilado en 1 columna */
+  .categories-bento {
+    height: auto;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 220px);
+    grid-template-areas:
+      "box-1"
+      "box-2"
+      "box-3";
+  }
+
+  .categories-bento__middle {
+    height: auto;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 200px);
+    grid-template-areas:
+      "box-4"
+      "box-5"
+      "box-6";
+  }
+
+  .categories-bento__bottom {
+    height: auto;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 200px);
+    grid-template-areas:
+      "box-7"
+      "box-8";
+  }
+
+  .categories-division {
+    gap: 16px;
+  }
+
+  .categorie-info {
+    padding: 20px;
+  }
+
+  .h4-gener {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .width {
+    max-width: 100%;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  .genders {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 80px;
+    gap: 28px;
+  }
+
+  .title-box p {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+  }
+
+  .title-row h1 {
+    font-size: 28px;
+  }
+
+  .title-row__sumrecords p {
+    font-size: 13px;
+  }
+
+  .title-row__sumrecords h2 {
+    font-size: 22px;
+  }
+
+  .categories-bento {
+    grid-template-rows: repeat(3, 180px);
+  }
+
+  .categories-bento__middle {
+    grid-template-rows: repeat(3, 160px);
+  }
+
+  .categories-bento__bottom {
+    grid-template-rows: repeat(2, 160px);
+  }
+
+  .categorie-info {
+    padding: 16px;
+  }
+
+  .p-number {
+    font-size: 11px;
+  }
+
+  .h4-gener {
+    font-size: 19px;
+    line-height: 24px;
+  }
+}

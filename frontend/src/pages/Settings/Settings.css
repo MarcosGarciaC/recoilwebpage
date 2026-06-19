@@ -110,7 +110,7 @@
 .s-card--premium  { grid-column: span 7; }
 
 /* ══════════════════════════════════════════════════════════════
-   BASE CARD  (inherited from Premium style)
+   BASE CARD
 ══════════════════════════════════════════════════════════════ */
 .s-card {
   position: relative;
@@ -119,8 +119,6 @@
   border-radius: 22px;
   padding: 36px 40px;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
-
-  /* reveal: starts invisible */
   opacity: 0;
   transition:
     opacity 0.55s ease,
@@ -129,7 +127,6 @@
     box-shadow 0.35s ease;
 }
 
-/* ── Top edge glow on hover (like Premium) ── */
 .s-card::before {
   content: '';
   position: absolute;
@@ -153,15 +150,10 @@
 
 /* ── Reveal animations ── */
 .s-reveal { opacity: 0; }
-
 .s-reveal-left  { transform: translateX(-60px); }
 .s-reveal-right { transform: translateX(60px); }
 .s-reveal-up    { transform: translateY(48px); }
-
-.s-reveal.s-active {
-  opacity: 1;
-  transform: translate(0);
-}
+.s-reveal.s-active { opacity: 1; transform: translate(0); }
 
 /* stagger */
 .s-card--security { transition-delay: 0ms;   }
@@ -171,7 +163,7 @@
 .s-card--actions  { transition-delay: 320ms; }
 .s-card--premium  { transition-delay: 400ms; }
 
-/* ── Corner decorators (from Premium) ── */
+/* ── Corner decorators ── */
 .s-card-corner {
   position: absolute;
   width: 14px;
@@ -189,8 +181,6 @@
 /* ══════════════════════════════════════════════════════════════
    CARD INNER PARTS
 ══════════════════════════════════════════════════════════════ */
-
-/* ── Header row ── */
 .s-card__header {
   display: flex;
   align-items: flex-start;
@@ -198,7 +188,6 @@
   margin-bottom: 28px;
 }
 
-/* ── Icon box ── */
 .s-card__icon {
   width: 52px;
   height: 52px;
@@ -233,7 +222,6 @@
   box-shadow: 0 0 20px rgba(172, 137, 255, 0.15);
 }
 
-/* ── Text block ── */
 .s-card__eyebrow {
   font-size: 11px;
   letter-spacing: 3px;
@@ -259,7 +247,6 @@
   letter-spacing: 0.3px;
 }
 
-/* ── Items list ── */
 .s-card__items {
   display: flex;
   flex-direction: column;
@@ -282,9 +269,7 @@
   gap: 8px;
 }
 
-.s-card__row--with-action {
-  gap: 12px;
-}
+.s-card__row--with-action { gap: 12px; }
 
 .s-row-action-with-status {
   display: inline-flex;
@@ -300,7 +285,6 @@
   text-transform: uppercase;
 }
 
-/* ── Row label ── */
 .s-row__label {
   display: flex;
   align-items: center;
@@ -324,7 +308,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   CHANGE BUTTON  (like Premium CTA, smaller)
+   CHANGE BUTTON
 ══════════════════════════════════════════════════════════════ */
 .s-btn-change {
   position: relative;
@@ -353,7 +337,6 @@
     0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Scanline sweep */
 .s-btn-change__glow {
   position: absolute;
   top: 0; left: -60%;
@@ -384,6 +367,7 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239CFF93' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
+  max-width: 100%;
 }
 
 .s-select:hover,
@@ -448,11 +432,13 @@
   font-weight: 600;
   color: var(--text);
   letter-spacing: 0.2px;
+  word-break: break-all;
 }
 
 .s-verified {
   color: var(--cyan);
   font-size: 15px;
+  flex-shrink: 0;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -483,6 +469,7 @@
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
 .s-action-btn i { font-size: 15px; }
@@ -508,6 +495,9 @@
   box-shadow: 0 0 24px rgba(255, 107, 107, 0.4);
 }
 
+/* ══════════════════════════════════════════════════════════════
+   PASSWORD / EMAIL FORM
+══════════════════════════════════════════════════════════════ */
 .password-form {
   margin-top: 24px;
   padding: 24px;
@@ -517,9 +507,7 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
 }
 
-.password-form__header {
-  margin-bottom: 18px;
-}
+.password-form__header { margin-bottom: 18px; }
 
 .password-form__header h4 {
   margin: 0;
@@ -537,15 +525,9 @@
   line-height: 1.5;
 }
 
-.password-form__fields {
-  display: grid;
-  gap: 14px;
-}
+.password-form__fields { display: grid; gap: 14px; }
 
-.password-field {
-  display: grid;
-  gap: 8px;
-}
+.password-field { display: grid; gap: 8px; }
 
 .password-field label {
   font-size: 0.75rem;
@@ -569,9 +551,10 @@
   border: none;
   background: transparent;
   color: #fff;
-  padding: 16px 16px;
+  padding: 16px;
   font-size: 0.95rem;
   outline: none;
+  min-width: 0;
 }
 
 .password-input-group input::placeholder {
@@ -603,13 +586,8 @@
   line-height: 1.4;
 }
 
-.form-feedback--error {
-  color: #ff6b6b;
-}
-
-.form-feedback--success {
-  color: var(--green);
-}
+.form-feedback--error   { color: #ff6b6b; }
+.form-feedback--success { color: var(--green); }
 
 .password-submit-btn {
   justify-content: center;
@@ -618,8 +596,8 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   PREMIUM CARD — special treatment
-══════════════════════════════════════════════════════ */
+   PREMIUM CARD
+══════════════════════════════════════════════════════════════ */
 .s-card--premium {
   background: linear-gradient(
     135deg,
@@ -638,7 +616,6 @@
     0 30px 70px rgba(0, 0, 0, 0.5);
 }
 
-/* Ambient glow blob */
 .premium-glow {
   position: absolute;
   top: -60px; right: -60px;
@@ -648,7 +625,6 @@
   pointer-events: none;
 }
 
-/* Top section */
 .premium-top {
   display: flex;
   align-items: flex-start;
@@ -680,7 +656,6 @@
   color: var(--text);
 }
 
-/* Description */
 .premium-desc {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.65);
@@ -689,7 +664,6 @@
   max-width: 520px;
 }
 
-/* Features grid */
 .premium-features-list {
   list-style: none;
   margin: 0 0 32px;
@@ -710,7 +684,6 @@
 
 .premium-feature-item i { font-size: 14px; }
 
-/* CTA button (same style as Premium page) */
 .premium-cta-btn {
   position: relative;
   overflow: hidden;
@@ -734,6 +707,7 @@
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.3s ease;
   margin-bottom: 12px;
+  box-sizing: border-box;
 }
 
 .premium-cta-btn:hover {
@@ -744,7 +718,6 @@
     0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* Glow sweep */
 .premium-cta-btn__glow {
   position: absolute;
   inset: 0;
@@ -753,7 +726,6 @@
   pointer-events: none;
 }
 
-/* Scanline sweep */
 .premium-cta-btn__scanline {
   position: absolute;
   top: 0; left: -60%;
@@ -783,40 +755,211 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — TABLET GRANDE (≤ 1100px)
+   Email, Lang y Privacy: 2 columnas en lugar de 3
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 1100px) {
   .settings-bento {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "security"
-      "email"
-      "lang"
-      "privacy"
-      "actions"
-      "premium";
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  .s-card--security { grid-column: span 2; }
+  .s-card--email    { grid-column: span 1; }
+  .s-card--lang     { grid-column: span 1; }
+  .s-card--privacy  { grid-column: span 2; }
+  .s-card--actions  { grid-column: span 1; }
+  .s-card--premium  { grid-column: span 1; }
 }
 
-@media (max-width: 768px) {
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 860px)
+   Todo a una columna
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
   .settings-content {
-    padding: 100px 20px 60px;
+    padding: 100px 32px 64px;
   }
 
-  .settings-header h1 {
-    font-size: 42px;
+  .settings-header {
+    margin-bottom: 48px;
   }
 
-  .premium-features-list {
+  .settings-bento {
     grid-template-columns: 1fr;
+  }
+
+  .s-card--security,
+  .s-card--email,
+  .s-card--lang,
+  .s-card--privacy,
+  .s-card--actions,
+  .s-card--premium {
+    grid-column: span 1;
+  }
+
+  /* Deshabilitar hover lift en touch (evita que quede pegado) */
+  .s-card:hover {
+    transform: none;
   }
 
   .s-card--premium {
-    padding: 32px 24px;
+    padding: 32px 28px;
   }
 
+  .premium-features-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL (≤ 560px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  .settings-content {
+    padding: 80px 16px 48px;
+  }
+
+  .settings-header {
+    margin-bottom: 36px;
+  }
+
+  .settings-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .settings-sub {
+    font-size: 13px;
+  }
+
+  .settings-bento { gap: 14px; }
+
+  /* Tarjetas más compactas */
+  .s-card {
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .s-card--premium {
+    padding: 24px 18px;
+  }
+
+  /* Header de tarjeta en columna cuando el icono + texto no caben */
+  .s-card__header {
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .s-card__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  .s-card__title { font-size: 18px; }
+
+  /* Rows: etiqueta y acción apilados si no caben en línea */
+  .s-card__row {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .s-card__row--with-action {
+    flex-wrap: nowrap;
+  }
+
+  /* El select ocupa todo el ancho disponible */
+  .s-select {
+    width: 100%;
+    max-width: 160px;
+  }
+
+  /* Botón cambiar más pequeño */
+  .s-btn-change {
+    padding: 7px 14px;
+    font-size: 10px;
+  }
+
+  /* Formulario de contraseña / email */
+  .password-form {
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
+
+  .password-input-group input {
+    padding: 13px 12px;
+    font-size: 0.88rem;
+  }
+
+  .password-toggle-btn {
+    width: 44px;
+    min-width: 44px;
+  }
+
+  .password-submit-btn {
+    padding: 14px 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  /* Premium card */
   .premium-top {
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
+    margin-bottom: 16px;
   }
+
+  .premium-icon-wrap {
+    width: 52px; height: 52px;
+    font-size: 24px;
+    border-radius: 12px;
+  }
+
+  .premium-title {
+    font-size: 32px;
+    letter-spacing: -1.5px;
+  }
+
+  .premium-desc { font-size: 13px; margin-bottom: 20px; }
+
+  .premium-features-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .premium-cta-btn {
+    padding: 16px 20px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  /* Botones de acción */
+  .s-action-btn {
+    padding: 13px 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL MUY PEQUEÑO (≤ 380px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .s-card { padding: 20px 14px; }
+
+  .s-card__title { font-size: 16px; }
+
+  .s-card__row--with-action {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .s-btn-change { align-self: flex-start; }
+
+  .premium-title { font-size: 26px; }
+
+  .s-select { max-width: 100%; }
 }

@@ -17,7 +17,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container{
@@ -112,7 +113,7 @@
     background-color: #151515;
     border: 1px solid #202020;
     color: #ffffff;
-    margin: 8px;
+    margin: 8px 0;
     padding: 12px 15px;
     font-size: 13px;
     border-radius: 8px;
@@ -130,6 +131,7 @@
     box-shadow: 0 0 10px rgba(0,255,76,.2);
 }
 
+/* ── FORM CONTAINERS ── */
 .form-container{
     position: absolute;
     top: 0;
@@ -166,18 +168,37 @@
         opacity: 0;
         z-index: 1;
     }
-
     50%, 100%{
         opacity: 1;
         z-index: 5;
     }
 }
 
+/* ── SOCIAL ICONS ── */
 .social-icons{
     margin: 20px 0;
 }
-/*Dividers son nuevos,si no gustan se pueden cambiar y dejar el espacio de ellos vacío*/
-/*Este es el inicio del estilo del divider*/
+
+.social-icons a{
+    border: 1px solid #222222;
+    background-color: #151515;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    transition: .3s;
+}
+
+.social-icons a:hover{
+    border-color: #00ff4c;
+    color: #00ff4c;
+}
+
+/* ── DIVIDER ── */
 .divider{
     display: flex;
     align-items: center;
@@ -201,27 +222,8 @@
     margin: 0 12px;
     display: block;
 }
-/*Este es el final del estilo del divider*/
 
-.social-icons a{
-    border: 1px solid #222222;
-    background-color: #151515;
-    border-radius: 20%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 3px;
-    width: 40px;
-    height: 40px;
-    color: #ffffff;
-    transition: .3s;
-}
-
-.social-icons a:hover{
-    border-color: #00ff4c;
-    color: #00ff4c;
-}
-
+/* ── TOGGLE PANEL (desktop) ── */
 .toggle-container{
     position: absolute;
     top: 0;
@@ -240,15 +242,13 @@
 }
 
 .toggle{
-    background:
-    linear-gradient(
+    background: linear-gradient(
         175deg,
         #00ff4c 0%,
         #00c83b 20%,
         #101010 70%,
         #000000 100%
     );
-
     color: #ffffff;
     position: relative;
     left: -100%;
@@ -277,18 +277,12 @@
     transition: all 0.6s ease-in-out;
 }
 
-.toggle-panel h1{
-    color: #ffffff;
-}
-
-.toggle-panel p{
-    color: #f0f0f0;
-}
+.toggle-panel h1{ color: #ffffff; }
+.toggle-panel p { color: #f0f0f0; }
 
 .toggle-left{
     transform: translateX(-200%);
 }
-
 .container.active .toggle-left{
     transform: translateX(0);
 }
@@ -297,7 +291,235 @@
     right: 0;
     transform: translateX(0);
 }
-
 .container.active .toggle-right{
     transform: translateX(200%);
+}
+
+/* ── FEEDBACK ── */
+.form-feedback{
+    font-size: 13px;
+    margin: 6px 0;
+    text-align: center;
+}
+.form-feedback--error   { color: #ff6b6b; }
+.form-feedback--success { color: #00ff4c; }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 640px)
+   Colapsa el diseño de dos columnas en uno
+   vertical con tabs para cambiar formulario
+══════════════════════════════════════════ */
+@media (max-width: 640px) {
+
+    .login-page{
+        align-items: flex-start;
+        padding: 24px 16px 40px;
+    }
+
+    /* El contenedor pasa a flujo normal, altura automática */
+    .container{
+        position: relative;
+        overflow: visible;
+        border-radius: 20px;
+        min-height: unset;
+        width: 100%;
+    }
+
+    /* Ocultar el panel deslizante en móvil */
+    .toggle-container{
+        display: none;
+    }
+
+    /* Ambos form-containers dejan de ser absolute */
+    .form-container{
+        position: relative;
+        top: unset;
+        left: unset;
+        width: 100%;
+        height: auto;
+        opacity: 1;
+        transform: none !important;
+        animation: none !important;
+        display: none;
+    }
+
+    /* Mostrar solo el formulario activo */
+    .sign-in{
+        display: flex;
+    }
+
+    /* Cuando está activo (.register) mostrar sign-up y ocultar sign-in */
+    .container.active .sign-in{
+        display: none;
+        transform: none;
+    }
+
+    .container.active .sign-up{
+        display: flex;
+        opacity: 1;
+        z-index: 1;
+        transform: none;
+        animation: none;
+    }
+
+    /* Formularios con padding ajustado */
+    .container form{
+        padding: 28px 20px 32px;
+        gap: 4px;
+    }
+
+    .container h1{
+        font-size: 22px;
+        margin-bottom: 4px;
+        text-align: center;
+    }
+
+    .container p{
+        font-size: 13px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .container input{
+        margin: 5px 0;
+        padding: 13px 14px;
+        font-size: 14px;
+    }
+
+    .container button:not(.hidden){
+        width: 100%;
+        padding: 14px;
+        font-size: 13px;
+        margin-top: 14px;
+    }
+
+    .social-icons{
+        margin: 14px 0;
+    }
+
+    /* Tabs de navegación en móvil (usando los botones .hidden) */
+    /* Los botones .hidden dentro de .toggle-panel no se ven
+       porque .toggle-container está oculto. Añadimos tabs
+       con un bloque que siempre se muestra en móvil. */
+
+    /* Tabs visuales: reutilizamos los botones hidden
+       convirtiéndolos en tabs pegados arriba del form */
+    .container button.hidden{
+        display: inline-block;
+        border: none;
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+        padding: 12px 20px;
+        font-size: 12px;
+        color: #666;
+        background: transparent;
+        box-shadow: none;
+        margin: 0;
+        flex: 1;
+        text-align: center;
+        cursor: pointer;
+        transition: color .2s, border-color .2s;
+    }
+
+    .container button.hidden:hover{
+        color: #00ff4c;
+        border-bottom-color: #00ff4c;
+        background: transparent;
+        transform: none;
+    }
+
+    /* Tab bar visible en la parte superior del container */
+    .toggle-panel{
+        position: static;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+        justify-content: stretch;
+        padding: 0;
+        transform: none !important;
+        display: flex;
+    }
+
+    /* Mostrar solo el toggle-panel correcto según el estado */
+    .toggle-left,
+    .toggle-right{
+        transform: none !important;
+    }
+
+    /* En móvil el .toggle actúa como tab bar */
+    .toggle{
+        background: #111;
+        border-bottom: 1px solid #1f1f1f;
+        border-radius: 20px 20px 0 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        transform: none !important;
+        display: flex;
+    }
+
+    /* Ocultar h1 y p dentro de los panels en móvil (son solo tabs) */
+    .toggle-panel h1,
+    .toggle-panel p{
+        display: none;
+    }
+
+    /* Tab activo */
+    .container:not(.active) .toggle-left button.hidden{
+        color: #00ff4c;
+        border-bottom-color: #00ff4c;
+    }
+
+    .container.active .toggle-right button.hidden{
+        color: #00ff4c;
+        border-bottom-color: #00ff4c;
+    }
+
+    /* Ocultar el toggle-container (ya lo hicimos arriba, refuerzo) */
+    .toggle-container{
+        display: none !important;
+    }
+
+    /* Mostrar el .toggle fuera del toggle-container — como tab */
+    /* El .toggle está DENTRO de .toggle-container, así que no podemos
+       sacarlo del DOM. En su lugar creamos los tabs con un pseudo-approach:
+       mostramos el toggle-container SIN overflow hidden ni position absolute */
+    .toggle-container{
+        display: block !important;
+        position: static !important;
+        left: unset !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        border-radius: 20px 20px 0 0 !important;
+        transform: none !important;
+        z-index: 10;
+    }
+
+    .container.active .toggle-container{
+        transform: none !important;
+        border-radius: 20px 20px 0 0 !important;
+    }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MÓVIL MUY PEQUEÑO (≤ 380px)
+══════════════════════════════════════════ */
+@media (max-width: 380px){
+    .container h1{ font-size: 18px; }
+
+    .container button.hidden{
+        font-size: 11px;
+        padding: 11px 12px;
+    }
+
+    .container form{
+        padding: 22px 14px 28px;
+    }
+
+    .social-icons a{
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
 }

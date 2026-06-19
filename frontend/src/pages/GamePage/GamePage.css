@@ -31,6 +31,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   padding: 64px 32px;
+  gap: 24px;
 }
 
 .header-desc__left {
@@ -39,6 +40,7 @@
   justify-content: center;
   align-items: start;
   gap: 16px;
+  min-width: 0;
 }
 
 .game-key__description {
@@ -46,11 +48,14 @@
   justify-content: center;
   align-items: center;
   gap: 32px;
+  flex-wrap: wrap;
 }
 
 .game-title {
   font-size: 86px;
   letter-spacing: -4.8px;
+  margin: 0;
+  word-break: break-word;
 }
 
 .game-key__description p {
@@ -58,6 +63,7 @@
   text-transform: uppercase;
   color: gray;
   font-weight: bold;
+  margin: 0;
 }
 
 .green-color { color: #00FC40; }
@@ -68,6 +74,7 @@
   flex-direction: column;
   gap: 16px;
   width: 350px;
+  flex-shrink: 0;
 }
 
 .review-buttons-row {
@@ -95,12 +102,14 @@
   align-items: center;
   gap: 10px;
   box-sizing: border-box;
-  padding: 16px 104.72px;
+  width: 100%;
+  padding: 16px 24px;
   background: linear-gradient(110deg, #9CFF93 0%, #00FC40 100%);
   border: none;
   color: #006413;
   font-weight: bold;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn-add_fav:hover {
@@ -111,6 +120,7 @@
 
 .btn-add_fav svg {
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .btn-add_fav:active svg {
@@ -130,6 +140,7 @@
   cursor:pointer;
 
   padding:16px 20px;
+  white-space: nowrap;
 }
 
 .btn-wrt__opinion:hover {
@@ -184,6 +195,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  min-width: 0;
 }
 
 /* ── CRITIC BOX ── */
@@ -232,6 +244,7 @@
   display: flex;
   gap: 20px;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .critic-score {
@@ -412,6 +425,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .own-review-meta {
@@ -419,6 +433,7 @@
   flex-direction: column;
   gap: 3px;
   flex: 1;
+  min-width: 0;
 }
 
 .review-user.own {
@@ -448,6 +463,7 @@
   gap: 8px;
   margin-left: auto;
   flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .btn-edit-review,
@@ -515,6 +531,7 @@
 .edit-actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .btn-save-review {
@@ -556,6 +573,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  min-width: 0;
 }
 
 .community-title-row {
@@ -564,6 +582,8 @@
   justify-content: space-between;
   border-bottom: 1px solid #99999922;
   margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .community-title {
@@ -583,6 +603,7 @@
   display: flex;
   gap: 6px;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .user-score-badge span {
@@ -630,6 +651,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .review-user {
@@ -686,6 +709,7 @@
   flex-direction: column;
   gap: 0;
   transition: border-color 0.3s;
+  box-sizing: border-box;
 }
 
 .submit-review:focus-within { border-color: #9CFF9333; }
@@ -718,6 +742,7 @@
   display: flex;
   gap: 8px;
   margin-bottom: 4px;
+  flex-wrap: wrap;
 }
 
 .rating-btn {
@@ -733,6 +758,7 @@
   gap: 4px;
   transition: all 0.2s ease;
   min-width: 52px;
+  flex: 1 1 0;
 }
 
 .rating-btn:hover {
@@ -817,6 +843,8 @@
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .own-review-user{
@@ -868,6 +896,7 @@
 .trailer-icon{
   width:44px;
   height:44px;
+  flex-shrink: 0;
 
   display:flex;
   justify-content:center;
@@ -888,6 +917,7 @@
   display:flex;
   flex-direction:column;
   gap:2px;
+  min-width: 0;
 }
 
 .trailer-info span{
@@ -901,4 +931,283 @@
   margin:0;
   color:#d0d0d0;
   font-size:13px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* Laptops pequeñas / tablets grandes */
+@media (max-width: 1200px) {
+  .game-header {
+    height: auto;
+    min-height: 460px;
+  }
+
+  .game-header__desc {
+    height: auto;
+    padding: 48px 32px;
+  }
+
+  .game-title {
+    font-size: 64px;
+    letter-spacing: -3px;
+  }
+
+  .critic-score {
+    font-size: 76px;
+  }
+
+  .header-desc__right {
+    width: 320px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .game-header__desc {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 28px;
+    gap: 28px;
+  }
+
+  .header-desc__right {
+    width: 100%;
+  }
+
+  .game-title {
+    font-size: 52px;
+    letter-spacing: -2px;
+  }
+
+  .game-key__description {
+    gap: 20px;
+  }
+
+  /* Comunidad: columnas apiladas */
+  .community-section {
+    flex-direction: column;
+    padding: 40px 28px;
+    gap: 40px;
+  }
+
+  .community-left,
+  .community-right {
+    width: 100%;
+  }
+
+  .critic-score {
+    font-size: 64px;
+  }
+
+  .community-title {
+    font-size: 26px;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile grande */
+@media (max-width: 768px) {
+  .game-header__desc {
+    padding: 32px 20px;
+    gap: 24px;
+  }
+
+  .game-title {
+    font-size: 38px;
+    letter-spacing: -1px;
+  }
+
+  .game-key__description {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .game-key__description p {
+    font-size: 13px;
+  }
+
+  .review-buttons-row {
+    flex-wrap: wrap;
+  }
+
+  .btn-add_fav,
+  .btn-wrt__opinion {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  .community-section {
+    padding: 32px 20px;
+    gap: 32px;
+  }
+
+  .critic-box {
+    padding: 20px 22px;
+  }
+
+  .critic-d {
+    gap: 16px;
+  }
+
+  .critic-score {
+    font-size: 52px;
+  }
+
+  .star {
+    font-size: 20px;
+  }
+
+  .description-side {
+    padding-left: 0;
+  }
+
+  .community-title-row {
+    margin-bottom: 24px;
+  }
+
+  .community-title {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  .own-review-card,
+  .review-card {
+    padding: 18px;
+  }
+
+  .own-review-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .btn-edit-review,
+  .btn-delete-review {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .submit-review {
+    padding: 24px 20px;
+  }
+
+  .rating-btn {
+    padding: 8px 10px;
+    min-width: 44px;
+  }
+
+  .trailer-link {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .trailer-icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  .game-header {
+    min-height: 420px;
+  }
+
+  .game-header__desc {
+    padding: 24px 16px;
+    gap: 20px;
+  }
+
+  .game-title {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .game-key__description p {
+    font-size: 12px;
+  }
+
+  .btn-add_fav,
+  .btn-wrt__opinion {
+    padding: 13px 14px;
+    font-size: 12px;
+  }
+
+  .btn-report {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+  }
+
+  .community-section {
+    padding: 24px 16px;
+    gap: 24px;
+  }
+
+  .critic-box {
+    padding: 18px;
+  }
+
+  .critic-score {
+    font-size: 42px;
+  }
+
+  .critic-label {
+    font-size: 9px;
+  }
+
+  .veredict-text {
+    font-size: 12px;
+  }
+
+  .community-title {
+    font-size: 19px;
+  }
+
+  .user-score-badge {
+    font-size: 11px;
+  }
+
+  .own-review-card,
+  .review-card {
+    padding: 14px;
+  }
+
+  .own-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .own-review-text,
+  .review-text {
+    font-size: 13px;
+  }
+
+  .rating-buttons {
+    gap: 6px;
+  }
+
+  .rating-btn {
+    min-width: 38px;
+    padding: 7px 8px;
+  }
+
+  .rating-num {
+    font-size: 14px;
+  }
+
+  .submit-review h3 {
+    font-size: 17px;
+  }
+
+  .upload-btn,
+  .show-all-btn {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+    justify-content: center;
+  }
 }

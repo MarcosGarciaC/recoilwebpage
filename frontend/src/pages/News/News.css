@@ -1,6 +1,5 @@
-
 .news-hero-games {
-  height: 800px; /* puedes ajustar altura diferente si quieres */
+  height: 800px;
   position: relative;
 }
 
@@ -8,14 +7,9 @@
   width: 100%;
   height: 800px;
   object-fit: cover;
-}
-
-.news-hero-img {
-  width: 100%;
-  height: 800px;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; 
+  background-attachment: fixed;
 }
 
 .news-overlay {
@@ -40,9 +34,11 @@
 .news-hero-heading {
   font-size: 72px;
   margin: 0;
-  line-height: 96px;
+  line-height: 1.05;
   letter-spacing: -4.8px;
   text-transform: uppercase;
+  word-break: break-word;
+  margin-top: 50px;
 }
 
 .datep span {
@@ -55,12 +51,17 @@
   font-weight: bold;
   border-radius: 2px;
   margin-right: 10px;
+  display: inline-block;
 }
 
 .datep {
   font-size: 10px;
   letter-spacing: 2px;
   color: #A1A1AA;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
 }
 
 .news-hero-text {
@@ -74,6 +75,7 @@
   display: flex;
   gap: 16px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .news-btn-review {
@@ -117,6 +119,7 @@
   width: 100%;
   border-bottom: 1px solid #2a2a2a;
   margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
 .news-filter__options {
@@ -125,6 +128,14 @@
   align-items: center;
   box-sizing: border-box;
   padding: 24px 32px;
+  gap: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.news-filter__options::-webkit-scrollbar {
+  display: none;
 }
 
 .news-filter__options li {
@@ -136,6 +147,9 @@
   font-family: "Space Grotesk", sans-serif;
   position: relative;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-bottom: 6px;
 }
 
 .news-filter__options li:hover {
@@ -181,6 +195,7 @@
   height: 220px;
   object-fit: cover;
   border-radius: 6px;
+  transition: transform 0.4s ease;
 }
 
 .news-card .log {
@@ -224,16 +239,15 @@
   transition: transform 0.4s ease;
 }
 
-.news-card img {
-  transition: transform 0.4s ease;
-}
-
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 16px;
   margin: 60px 0;
+  flex-wrap: wrap;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .pagination-arrow {
@@ -246,6 +260,7 @@
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .pagination-arrow:hover {
@@ -262,6 +277,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pagination-number {
@@ -275,6 +292,7 @@
   font-size: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .pagination-number:hover {
@@ -291,6 +309,7 @@
   padding: 8rem 2rem;
   font-family: "Manrope", sans-serif;
   color: white;
+  box-sizing: border-box;
 }
 
 .subscribe-container {
@@ -330,6 +349,9 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 500px;
 }
 
 .subscribe-input {
@@ -342,6 +364,9 @@
   letter-spacing: 2px;
   outline: none;
   width: 300px;
+  flex: 1 1 240px;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .subscribe-input::placeholder {
@@ -363,8 +388,278 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .subscribe-button:hover {
   background-color: #9CFF93;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* Laptops pequeñas / tablets grandes */
+@media (max-width: 1200px) {
+  .news-hero-games {
+    height: 640px;
+  }
+
+  .news-hero-img {
+    height: 640px;
+    background-attachment: scroll;
+  }
+
+  .news-hero-heading {
+    font-size: 56px;
+    letter-spacing: -3px;
+  }
+
+  .news-card__box {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+    padding: 32px 28px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .news-hero-games {
+    height: 540px;
+  }
+
+  .news-hero-img {
+    height: 540px;
+  }
+
+  .news-text-overlay {
+    margin: 32px;
+    max-width: 100%;
+  }
+
+  .news-hero-heading {
+    font-size: 42px;
+    letter-spacing: -2px;
+  }
+
+  .news-hero-text {
+    font-size: 15px;
+  }
+
+  .news-filter__options {
+    padding: 20px 24px;
+    gap: 22px;
+  }
+
+  .news-card__box {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 28px 24px;
+  }
+
+  .subscribe-section {
+    padding: 6rem 2rem;
+  }
+
+  .subscribe-title {
+    font-size: 30px;
+  }
+}
+
+/* Mobile grande */
+@media (max-width: 768px) {
+  .news-hero-games {
+    height: 480px;
+  }
+
+  .news-hero-img {
+    height: 480px;
+    background-attachment: scroll;
+  }
+
+  .news-text-overlay {
+    margin: 20px;
+    gap: 12px;
+  }
+
+  .news-hero-heading {
+    font-size: 32px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+  }
+
+  .news-hero-text {
+    font-size: 14px;
+    margin-top: 14px;
+  }
+
+  .news-btn-overlay {
+    width: 100%;
+  }
+
+  .news-btn-review,
+  .news-btn-gameplay {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 13px 20px;
+    font-size: 12px;
+  }
+
+  .news-filter__options {
+    padding: 16px 20px;
+    gap: 18px;
+  }
+
+  .news-filter__options li {
+    font-size: 12px;
+  }
+
+  .news-card__box {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 28px 20px;
+  }
+
+  .news-card img {
+    height: 200px;
+  }
+
+  .news-card h3 {
+    font-size: 20px;
+  }
+
+  .news-card p {
+    font-size: 14px;
+  }
+
+  .pagination {
+    gap: 10px;
+    margin: 40px 0;
+  }
+
+  .pagination-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .pagination-number {
+    width: 34px;
+    height: 34px;
+    font-size: 11px;
+  }
+
+  .subscribe-section {
+    padding: 4.5rem 1.5rem;
+  }
+
+  .subscribe-title {
+    font-size: 24px;
+  }
+
+  .subscribe-description {
+    margin-bottom: 32px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .subscribe-input {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .subscribe-button {
+    width: 100%;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  .news-hero-games {
+    height: 420px;
+  }
+
+  .news-hero-img {
+    height: 420px;
+  }
+
+  .news-text-overlay {
+    margin: 16px;
+    gap: 10px;
+  }
+
+  .news-hero-heading {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .news-hero-text {
+    font-size: 13px;
+  }
+
+  .datep {
+    font-size: 9px;
+  }
+
+  .news-btn-overlay {
+    flex-direction: column;
+  }
+
+  .news-filter__options {
+    padding: 14px 16px;
+    gap: 14px;
+  }
+
+  .news-filter__options li {
+    font-size: 11px;
+  }
+
+  .news-card__box {
+    padding: 24px 16px;
+    gap: 28px;
+  }
+
+  .news-card img {
+    height: 180px;
+  }
+
+  .news-card h3 {
+    font-size: 18px;
+  }
+
+  .pagination-numbers {
+    gap: 6px;
+  }
+
+  .pagination-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .pagination-number {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+
+  .subscribe-section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .subscribe-tag {
+    font-size: 9px;
+  }
+
+  .subscribe-title {
+    font-size: 20px;
+  }
+
+  .subscribe-description {
+    font-size: 14px;
+  }
 }

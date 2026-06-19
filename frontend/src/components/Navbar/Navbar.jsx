@@ -5,10 +5,12 @@ import UserMenu from '../UserMenu/UserMenu';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  
   const [currentUser, setCurrentUser] = useState(() => {
     try { return JSON.parse(localStorage.getItem('currentUser')) } catch (e) { return null }
   })
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
   const [showGreeting, setShowGreeting] = useState(
@@ -68,11 +70,15 @@ const Navbar = () => {
     return () => window.removeEventListener('userUpdated', onUserUpdated)
   }, [])
 
+ const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
   return (
     <nav id='navbar'>
       <div id='nb-left__side'>
         <h1 className='logo wave-logo'>RECOIL</h1>
       </div>
+
+      {/* Menú Desktop */}
       <div id="nb-center">
         <ul className='option-list'>
           <li className='list-option'><a href="/">Descubre</a></li>
@@ -81,52 +87,58 @@ const Navbar = () => {
           <li className='list-option'><a href="/premium">Premium</a></li>
         </ul>
       </div>
+
       <div id="nb-right__side">
         {currentUser ? (
           <div className="user-section">
             <div className='greeting-container'>
-          <span className={`greeting greeting-full ${
-            showGreeting ? "show" : "hide"
-          }`}>
-            Hola, {currentUser.name}
-            </span>
-            <span
-            className={`greeting greeting-name ${
-              showGreeting ? "hide" : "show"
-            }`}
-            >
-              {currentUser.name}
+              <span className={`greeting greeting-full ${showGreeting ? "show" : "hide"}`}>
+                Hola, {currentUser.name}
+              </span>
+              <span className={`greeting greeting-name ${showGreeting ? "hide" : "show"}`}>
+                {currentUser.name}
               </span>
             </div>
+
             <div ref={menuRef}>
-            <div
-              className='profile-avatar'
-              onClick={() => setMenuOpen(prev => !prev)}
-            >
-              {currentUser?.avatar ? (
-                <img src={currentUser.avatar} alt={currentUser.name} />
-              ) : (
-                (currentUser.name || 'U').charAt(0).toUpperCase()
-              )}
-            </div>
-            {menuOpen && (
-              <UserMenu currentUser={currentUser} />
-            )}
+              <div className='profile-avatar' onClick={() => setMenuOpen(prev => !prev)}>
+                {currentUser?.avatar ? (
+                  <img src={currentUser.avatar} alt={currentUser.name} />
+                ) : (
+                  (currentUser.name || 'U').charAt(0).toUpperCase()
+                )}
+              </div>
+              {menuOpen && <UserMenu currentUser={currentUser} />}
             </div>
           </div>
         ) : (
-        <a onClick={() => navigate("/login")} className="login-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-person" viewBox="0 0 16 16">
-          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-        </svg>
-        <span>
-          Login
-        </span>
-        </a>
+          <a onClick={() => navigate("/login")} className="login-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-person" viewBox="0 0 16 16">
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+            </svg>
+            <span>Login</span>
+          </a>
         )}
+
+        {/* Hamburger Button */}
+        <button className="hamburger" onClick={toggleMobileMenu} aria-label="Toggle menu">
+          <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
+        <ul className='mobile-option-list'>
+          <li><a href="/" onClick={() => setMobileMenuOpen(false)}>Descubre</a></li>
+          <li><a href="/genders" onClick={() => setMobileMenuOpen(false)}>Generos</a></li>
+          <li><a href="/news" onClick={() => setMobileMenuOpen(false)}>Noticias</a></li>
+          <li><a href="/premium" onClick={() => setMobileMenuOpen(false)}>Premium</a></li>
+        </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
