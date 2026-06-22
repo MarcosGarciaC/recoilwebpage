@@ -20,15 +20,6 @@
   justify-content: center;
 }
 
-#nb-left__side, #nb-right__side {
-  display: flex;
-  align-items: center;
-}
-
-#nb-right__side {
-  gap: 12px;
-  position: relative;
-}
 .wave-logo {
   font-size: 32px;
   font-weight: 900;
@@ -197,6 +188,8 @@
   border-radius: 50%;
   border: 2px solid #00ff41;
 
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -257,9 +250,75 @@
   }
 }
 
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 @media (max-width: 480px) {
   #navbar {
     padding: 0 15px;
   }
+}
+
+#nb-left__side {
+  width: 150px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#nb-right__side {
+  min-width: 150px; 
+  width: auto;      
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-right: 20px;
+}
+
+.greeting-container{
+    position: relative;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+}
+
+.greeting{
+    position: absolute;
+    right: 0;
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    transition:
+      opacity .8s ease,
+      transform .8s ease,
+      visibility .8s;
+}
+
+.show{
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.hide{
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.greeting-full{
+    white-space: nowrap;
+}
+
+.greeting-name{
+    white-space: nowrap;
 }
 
